@@ -1,0 +1,433 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Roboto;
+}
+
+body,html{
+  height: 100%;
+  width: 100%;
+}
+
+body{
+  background: #EFEFEF;
+}
+
+
+/*App header at the very top*/
+.o-app-header{
+  width: 100%;
+  height: 60px;
+  background: #FAFAFA;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.16);
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center; 
+  justify-content: space-between
+}
+
+.c-samsung-title{
+  font-size: 14px;
+  font-weight: 600;
+  margin-left: 45px;
+  line-height: 60px;
+  display: inline-block;
+}
+
+
+
+
+
+
+
+
+/*main body section*/
+.o-body {
+  position: relative;
+  height: calc(100% + 120px);
+  display: flex;
+  top: 60px;
+}
+
+
+
+
+
+/*navigation of the app*/
+
+.app__main__nav{
+  background: #f5f5f5;
+  width: 233px;
+  height: 100%;
+  box-shadow: 2px 0 2px -2px rgba(0, 0, 0, 0.16);
+  padding: 34px 0;
+  font-size: 12px;
+  position: fixed;
+}
+
+.app__main__nav i {
+  margin-right: 20px;
+  color: #A1A1A1;
+  font-size: 22px;
+}
+
+.app__main__nav .nav__link{
+  display: flex;
+  align-items: center;
+  padding: 8px 20px;
+  margin-top: 2px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+}
+
+.app__main__nav .nav__link:hover{
+  background: white;
+}
+
+.app__main__nav .active{
+  background: white;
+  font-weight: 700;
+  color: #F46A4E;
+}
+.app__main__nav .active i{
+  color: inherit;
+}
+
+
+.app__main__nav :first-child {
+  margin-top: 0 !important;
+}
+
+
+
+
+/*sections*/
+
+.link__category {
+  margin-top: 39px;
+  position: relative;
+}
+.link__category h3 {
+  padding: 0 22px;
+  margin-bottom: 12px;
+  letter-spacing: 0.3px;
+  font-size: 12px;
+}
+
+
+
+
+
+
+
+
+
+/*body*/
+
+.o-main-body{
+  width: calc(100% - 233px);
+  margin-left: 233px;
+  padding: 41px 0;
+}
+
+.c-main-form {
+  width: 80%;
+  max-width: 500px;
+  margin: 0 auto;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.16);
+  border-radius: 4px;
+  padding: 1em;
+}
+
+.o-main-layout{
+  max-width: 720px;
+  margin: 0 auto;
+  height: auto;
+  width: 90%;
+}
+
+.c-main-input{
+  border: none;
+  width: 100%;
+  word-break: break-all;
+  resize: vertical;
+  overflow: auto;
+}
+
+.c-main-form textarea:focus+div {
+  display: inline-block;
+}
+
+.c-main-input:focus{
+  outline: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+.o-notes-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 70px;
+}
+
+.o-note {
+  flex-basis: 44%;
+  height: auto;
+  background: white;
+  margin-bottom: 10%;
+  border-radius: 4px;
+  box-shadow: 0 0 2px rgba(0,0,0,0.26);
+  max-width: 200px;
+  padding: 20px 10px 2px 20px ;
+  color: #848484;
+  margin-left: 20px;
+  position: relative;
+  cursor: pointer;
+  transition: 0.3s all ease;
+  transform: scale(1);
+}
+
+.js-edit-mode .o-note {
+  transform: scale(0.85);
+}
+
+
+.o-notes-container article:nth-of-type(1){
+  margin-left: 0 !important;
+}
+
+.c-note-title {
+  font-weight: 500;
+  font-size: 19px;
+  padding-bottom: 15px;
+  color: #2A2A2A;
+  font-family: sans-serif;
+}
+
+.c-note-description {
+  font-family: sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.3px;
+}
+
+.c-note-footer {
+  font-size: 11px;
+  border-top: 1px solid lightgrey;
+  margin-top: 30px;
+  padding: 10px 5px;
+}
+
+
+
+.o-note [class*="js-decorate-"]{
+color: #ffba00
+}
+
+
+.js-decorate-star {
+position: absolute;
+top: -12px;
+right: -10px;
+font-size: 26px;
+color: #EFC90C;
+}
+
+.js-decorate-in-footer {
+display: block;
+padding-top: 5px;
+color: #EFC90C;
+}
+
+
+.o-notes-header {
+  width: 100%;
+  height: auto;
+  margin-bottom: 3.5em;
+/*
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+*/
+  padding: 5px 0px;
+  position: relative;
+}
+
+
+
+.o-notes-header-title {
+  font-size: 14px;
+  color: #818080;
+  float: left;
+  padding: 5px 0;
+}
+
+.o-notes-header-btn {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #F46A4E;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+
+.o-notes-header-btn:hover{
+  background: #e0e0e0;
+}
+
+
+
+
+
+
+
+
+.js-notes-selected-actions {
+  display: flex;
+  overflow: hidden;
+  transition: 0.2s all ease;
+  transform: scale(0);
+  float: right;
+}
+
+.js-edit-mode .js-notes-selected-actions {
+  transform: scale(1);
+}
+
+.o-samsung-checkbox input {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+.o-samsung-checkbox label {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  border: 1px solid #939393;
+  border-radius: 3px;
+  top: 0;
+  right: 0;
+  transition: 0.2s transform,background ease !important;
+  cursor: pointer;
+}
+.o-samsung-checkbox label:active{
+  transform: scale(0.8);
+}
+.o-samsung-checkbox label:after{
+  content: '';
+  left: 6px;
+  width: 4px;
+  height: 12px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) scale(0);
+  position: absolute;
+  transition: 0.2s transform ease !important;
+  pointer-events: none;
+}
+
+.o-samsung-checkbox {
+  position: relative;
+  padding-left: 18px;
+  width: 18px !important;
+  height: 18px !important;
+  display: inline-block;
+}
+
+.o-note .o-samsung-checkbox {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  z-index: 99;
+  transform: scale(0);
+  transition: 0.2s all ease;
+}
+
+.js-edit-mode .o-note .o-samsung-checkbox {
+  transform: scale(1.3);
+}
+
+.o-samsung-checkbox input:checked + label {
+  background: rgb(244, 106, 78);
+  border: 0;
+}
+.o-samsung-checkbox input:checked + label:after{
+  transform: rotate(45deg) scale(1);
+}
+
+
+.c-notes-select-toggle{
+  margin-right: 20px;
+}
+.c-notes-select-toggle:hover {
+  background: none;
+}
+
+.c-notes-select-toggle span {
+  padding-right: 5px;
+  vertical-align: middle;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.js-note-edit {
+  transition: 0.2s all ease;
+  transform: scale(1);
+  position: absolute;
+  right: 0;
+}
+.js-edit-mode .js-note-edit {
+  transform: scale(0);
+}
+
+
+
+.js-catergory-edit {
+  position: absolute;
+  right: 20px;
+  padding: 4px 6px;
+  transition: 0.2s background ease;
+  cursor: pointer;
+  top: -4px;
+}
+
+.js-catergory-edit:hover{
+  background: #e3e3e3;
+}
+.c-main-form input {
+  margin-bottom: 1em;
+  font-size: 16px;
+}
+
+.c-main-form div {
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 1.25em ;
+  margin-right: 2em;
+  display: inline-block;
+  padding: 0.2em 0.3em;
+  border-radius: 2px;
+  cursor: pointer;
+  display: none;
+}
+.c-main-form div:hover {
+  background: lightgrey;
+}
