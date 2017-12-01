@@ -1,12 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.jsx';
-import registerServiceWorker from './registerServiceWorker';
+import { BrowserRouter } from "react-router-dom";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+
+let Jsx = () => (
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>
+);
+
+
+ReactDOM.render(<Jsx />, document.getElementById('root'));
 
 module.hot.accept('./App.jsx', () => {
-    ReactDOM.render(<App />, document.getElementById('root'));
+    ReactDOM.render(<Jsx />, document.getElementById('root'));
 })
-
-registerServiceWorker();
