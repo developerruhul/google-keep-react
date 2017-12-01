@@ -1,0 +1,32 @@
+.o-notes-cards-wrapper{
+    display: flex;
+    width: 100%;
+    flex-flow: row wrap;
+    height: auto;
+    justify-content: space-between;
+    margin-top: 70px;
+    height: auto;
+}
+
+.o-notes-container {
+    width: 100%;
+    height: auto;
+    margin-top: 70px;
+}
+
+.o-note {
+    flex-grow: 1;
+    height: auto;
+    background: white;
+    margin-bottom: 10%;
+    border-radius: 4px;
+    box-shadow: 0 0 2px rgba(0,0,0,0.26);
+    max-width: 200px;
+    padding: 20px 10px 2px 20px ;
+    color: #848484;
+    position: relative;
+    cursor: pointer;
+    transition: 0.3s all ease;
+    transform: scale(1);
+    min-width: 44%;
+}

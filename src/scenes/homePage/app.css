@@ -170,47 +170,8 @@ body{
 
 
 
-
-
-
-
-
-
-
-.o-notes-container {
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-top: 70px;
-}
-
-.o-note {
-    flex-basis: 44%;
-    height: auto;
-    background: white;
-    margin-bottom: 10%;
-    border-radius: 4px;
-    box-shadow: 0 0 2px rgba(0,0,0,0.26);
-    max-width: 200px;
-    padding: 20px 10px 2px 20px ;
-    color: #848484;
-    margin-left: 20px;
-    position: relative;
-    cursor: pointer;
-    transition: 0.3s all ease;
-    transform: scale(1);
-}
-
 .js-edit-mode .o-note {
     transform: scale(0.85);
-}
-
-
-.o-notes-container article:nth-of-type(1){
-    margin-left: 0 !important;
 }
 
 .c-note-title {
@@ -260,11 +221,6 @@ body{
     width: 100%;
     height: auto;
     margin-bottom: 3.5em;
-/*
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-*/
     padding: 5px 0px;
     position: relative;
 }
@@ -291,9 +247,6 @@ body{
 .o-notes-header-btn:hover{
     background: #e0e0e0;
 }
-
-
-
 
 
 

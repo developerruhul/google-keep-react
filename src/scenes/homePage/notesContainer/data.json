@@ -1,0 +1,30 @@
+[
+    {
+        "title": "MADINA",
+        "note": "Medina is a city in western Saudi Arabia. In the city center, the vast Al-Masjid an-Nabawi (Prophet's Mosque) is a major Islamic pilgrimage site. Its striking Green Dome rises above the tombs of the Prophet ",
+        "id": 1,
+        "modified": "12/06/2017",
+        "decorate": "alarm"
+    },
+    {
+        "title": "USA",
+        "note": "The U.S. is a country of 50 states covering a vast swath of North America, with Alaska in the northwest and Hawaii extending the nation’s presence into the Pacific Ocean. Major Atlantic Coast cities are New ",
+        "id": 2,
+        "modified": "12/06/2017",
+        "decorate": "star"
+    },
+    {
+        "title": "INDIA",
+        "note": "India is a vast South Asian country with diverse terrain – from Himalayan peaks to Indian Ocean coastline – and history reaching back 5 millennia. ",
+        "id": 3,
+        "modified": "12/06/2017",
+        "decorate": "star"
+    },
+    {
+        "title": "INDIA",
+        "note": "India is a vast South Asian country with diverse terrain – from Himalayan peaks to Indian Ocean coastline – and history reaching back 5 millennia. ",
+        "id": 4,
+        "modified": "12/06/2017",
+        "decorate": "locked"
+    }
+]
