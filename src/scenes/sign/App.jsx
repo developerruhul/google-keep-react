@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-export default class SignUp extends React.Component {
+
+export default class SignUp extends Component {
     render() {
         return (
-            <h1>Hello world</h1>
+            <h1 onClick={this.logIn}>Log In With Google</h1>
         )
     }
 }

@@ -42,7 +42,7 @@ const Notes = () => (
                     title={item.title}
                     note={item.note}
                     modified={item.modified}
-                    decorate={item.decorate}
+                    filter={item.filter}
                     id={item.id}
                 />
             ))
