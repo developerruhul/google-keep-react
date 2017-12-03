@@ -5,4 +5,12 @@ export class Util {
 
         return result;
     }
+
+    static objToArray(obj) {
+        let keys = Object.keys(obj);
+
+        return keys.map(id => ({
+            ...obj[id], id
+        }))
+    }
 }

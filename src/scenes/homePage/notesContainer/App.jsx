@@ -1,14 +1,13 @@
 import React from 'react';
-import Header from './components/header';
-import Note from './components/note';
-import './notes.css';
-
-let Data = require('./data.json');
-
+import Header from './header/header';
+import './styles/notes.css';
+import { connect } from "react-redux";
+import NoteCreator from './components/noteCreator';
 
 
 
-export default class NotesContainer extends React.Component {
+
+class NotesContainer extends React.Component {
     state = {
         editMode: false
     }
@@ -19,33 +18,18 @@ export default class NotesContainer extends React.Component {
         return (
             <div className={`o-notes-container ${jsEditClass}`}>
                 <Header toggleEditMode={this.toggleEditMode} />
-                <Notes />
+                <NoteCreator data={this.props.notes} />
             </div>
         )
     }
 
     toggleEditMode = () => {
-        this.setState({ editMode: !this.state.editMode })
+        this.setState({ editMode: !this.state.editMode });
     }
 }
 
 
 
+const stateToProps = ({ notes }) => ({ notes });
 
-
-const Notes = () => (
-    <div className="o-notes-cards-wrapper">
-        {
-            Data.map(item => (
-                <Note
-                    key={item.id}
-                    title={item.title}
-                    note={item.note}
-                    modified={item.modified}
-                    filter={item.filter}
-                    id={item.id}
-                />
-            ))
-        }
-    </div>
-)
+export default connect(stateToProps)(NotesContainer);
