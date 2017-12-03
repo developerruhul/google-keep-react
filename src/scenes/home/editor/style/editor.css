@@ -1,0 +1,19 @@
+.c-main-form input {
+    margin-bottom: 1em;
+    font-size: 16px;
+}
+
+.c-main-form div {
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 1.25em ;
+    margin-right: 2em;
+    display: inline-block;
+    padding: 0.2em 0.3em;
+    border-radius: 2px;
+    cursor: pointer;
+    display: none;
+}
+.c-main-form div:hover {
+    background: lightgrey;
+}

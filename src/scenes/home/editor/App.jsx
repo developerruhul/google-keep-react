@@ -1,5 +1,6 @@
 import React from 'react';
-import { connect } from "react-redux";
+import './style/editor.css';
+
 
 export default class MainForm extends React.Component {
     render() {

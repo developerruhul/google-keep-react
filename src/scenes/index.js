@@ -1,6 +1,6 @@
 // homepage imports
-import App from './homePage/App';
-import Checkbox from '../components/Checkbox';
+import App from './home/App';
+import Checkbox from '../components/Checkbox/Checkbox';
 import { Util } from "../util/index";
 
 // signUp Imports

@@ -1,3 +1,4 @@
+/* normalize */
 *{
     padding: 0;
     margin: 0;
@@ -15,37 +16,12 @@ body{
 }
 
 
-/*App header at the very top*/
-.o-app-header{
-    width: 100%;
-    height: 60px;
-    background: #FAFAFA;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.16);
-    z-index: 10;
-    position: fixed;
-    top: 0;
-    display: flex;
-    align-items: center; 
-    justify-content: space-between
-}
-
-.c-samsung-title{
-    font-size: 14px;
-    font-weight: 600;
-    margin-left: 45px;
-    line-height: 60px;
-    display: inline-block;
-}
 
 
 
 
-
-
-
-
-/*main body section*/
-.o-body {
+/*main wrapper around everything of the app exporting from App component*/
+.js-wrapper {
     position: relative;
     height: calc(100% + 120px);
     display: flex;
@@ -55,80 +31,7 @@ body{
 
 
 
-
-/*navigation of the app*/
-
-.app__main__nav{
-    background: #e8e8e8;
-    width: 233px;
-    height: 100%;
-    box-shadow: 2px 0 2px -2px rgba(0, 0, 0, 0.16);
-    padding: 34px 0;
-    font-size: 12px;
-    position: fixed;
-}
-
-.app__main__nav i {
-    margin-right: 20px;
-    color: #A1A1A1;
-    font-size: 22px;
-}
-
-.app__main__nav .nav__link{
-    display: flex;
-    align-items: center;
-    padding: 8px 20px;
-    margin-top: 2px;
-    font-weight: 500;
-    letter-spacing: 0.3px;
-    cursor: pointer;
-}
-
-.app__main__nav .nav__link:hover{
-    background: #d8d8d8;
-}
-
-.app__main__nav .active{
-    background: #d8d8d8;
-    font-weight: 700;
-    color: #F46A4E;
-}
-.app__main__nav .active i{
-    color: inherit;
-}
-
-
-.app__main__nav :first-child {
-    margin-top: 0 !important;
-}
-
-
-
-
-/*sections*/
-
-.link__category {
-    margin-top: 39px;
-    position: relative;
-}
-.link__category h3 {
-    padding: 0 22px;
-    margin-bottom: 12px;
-    letter-spacing: 0.3px;
-    font-size: 12px;
-}
-
-
-
-
-
-
-
-
-
-/*body*/
-
-.o-main-body{
+.o-main{
     width: calc(100% - 233px);
     margin-left: 233px;
     padding: 41px 0;
@@ -150,6 +53,7 @@ body{
     height: auto;
     width: 90%;
 }
+
 
 .c-main-input{
     border: none;
@@ -264,55 +168,7 @@ body{
     transform: scale(1);
 }
 
-.o-samsung-checkbox input {
-    width: 0;
-    height: 0;
-    visibility: hidden;
-}
 
-.o-samsung-checkbox label {
-    width: 18px;
-    height: 18px;
-    position: absolute;
-    border: 1px solid #939393;
-    border-radius: 3px;
-    top: 0;
-    right: 0;
-    transition: 0.2s transform,background ease !important;
-    cursor: pointer;
-}
-.o-samsung-checkbox label:active{
-    transform: scale(0.8);
-}
-.o-samsung-checkbox label:after{
-    content: '';
-    left: 6px;
-    width: 4px;
-    height: 12px;
-    border: solid #fff;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg) scale(0);
-    position: absolute;
-    transition: 0.2s transform ease !important;
-    pointer-events: none;
-}
-
-.o-samsung-checkbox {
-    position: relative;
-    padding-left: 18px;
-    width: 18px !important;
-    height: 18px !important;
-    display: inline-block;
-}
-
-.o-note .o-samsung-checkbox {
-    position: absolute;
-    top: -10px;
-    left: -10px;
-    z-index: 99;
-    transform: scale(0);
-    transition: 0.2s all ease;
-}
 
 .js-edit-mode .o-note .o-samsung-checkbox {
     transform: scale(1.3);
@@ -341,6 +197,8 @@ body{
     font-size: 14px;
 }
 
+
+
 .js-note-edit {
     transition: 0.2s all ease;
     transform: scale(1);
@@ -365,22 +223,4 @@ body{
 .js-catergory-edit:hover{
     background: #e3e3e3;
 }
-.c-main-form input {
-    margin-bottom: 1em;
-    font-size: 16px;
-}
 
-.c-main-form div {
-    font-size: 14px;
-    font-weight: 500;
-    margin-top: 1.25em ;
-    margin-right: 2em;
-    display: inline-block;
-    padding: 0.2em 0.3em;
-    border-radius: 2px;
-    cursor: pointer;
-    display: none;
-}
-.c-main-form div:hover {
-    background: lightgrey;
-}
