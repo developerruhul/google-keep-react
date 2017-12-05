@@ -13,8 +13,8 @@ const Note = ({ filter, id, title, note, modified }) => (
         <p className="c-note-description">{Utils.truncate(note)}</p>
 
         <footer className="c-note-footer">
-            {modified}
-            <i className="material-icons js-decorate-in-footer">{filter}</i>
+            <span>Modified: {modified}</span>
+            {filter ? <i className="material-icons js-decorate-in-footer">{filter}</i> : null}
         </footer>
 
     </article>
