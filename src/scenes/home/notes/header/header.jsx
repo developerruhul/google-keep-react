@@ -2,7 +2,7 @@ import React from 'react';
 import { CheckboxInput } from '../../../index';
 
 
-const Header = ({ toggleEditMode }) => (
+const Header = ({ toggleEditMode, ...other }) => (
     <header className="o-notes-header">
         <h1 className="o-notes-header-title">NOTES</h1>
 
@@ -16,7 +16,11 @@ const Header = ({ toggleEditMode }) => (
 
             <div role="button" className="o-notes-header-btn c-notes-select-toggle">
                 <span>All</span>
-                <CheckboxInput id='iAmRuhul' />
+                <CheckboxInput
+                    id="-f-4t3nkso49-"
+                    {...other}
+                    checked={other.checked}
+                />
             </div>
             <div role="button" className="o-notes-header-btn">MOVE</div>
             <div role="button" className="o-notes-header-btn">DELETE</div>

@@ -174,13 +174,7 @@ body{
     transform: scale(1.3);
 }
 
-.o-samsung-checkbox input:checked + label {
-    background: rgb(244, 106, 78);
-    border: 0;
-}
-.o-samsung-checkbox input:checked + label:after{
-    transform: rotate(45deg) scale(1);
-}
+
 
 
 .c-notes-select-toggle{

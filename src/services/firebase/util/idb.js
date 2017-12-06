@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Util } from "../../../util/index";
 import db from '../idb';
 
 
-export default class IDBUtil extends Component {
+export default class IDBUtil extends React.Component {
     render() { return null }
 
     populateState = () => {

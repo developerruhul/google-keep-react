@@ -9,7 +9,6 @@ db.version(1).stores({
 
 db.open()
     .catch(e => console.log(e))
-    .then(e => console.log("opened Successfully"))
 
 
 export default db;
