@@ -9,16 +9,12 @@ const intialState = {
 
 export default function NoteStore(state = intialState, action) {
     switch (action.type) {
-        case "addNote":
-            return addNote(state, action);
+        case "addNote": return addNote(state, action);
+        case "populate": return populate(state, action);
 
         default:
             return state;
     }
-
-    // forward action to IDBFire to sync with IDB and Firebase
-
-
 }
 
 
@@ -37,4 +33,11 @@ function addNote(state, action) {
         },
         action: action
     };
+}
+
+function populate(state, action) {
+    return {
+        action,
+        ...action.data
+    }
 }

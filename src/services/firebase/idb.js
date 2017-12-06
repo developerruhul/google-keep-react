@@ -3,7 +3,7 @@ import Dexie from "dexie";
 
 const db = new Dexie("samsung-notes-web");
 db.version(1).stores({
-    category: "name,notesId",
+    category: "id,notesId",
     notes: "id,title,note,modified,filter"
 });
 

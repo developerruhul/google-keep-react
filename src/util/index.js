@@ -65,5 +65,27 @@ export class Util {
             return id;
         })();
     }
+
+    static arrayToObj(array) {
+        let result = {};
+
+        array.map(e => {
+            let { id, ...data } = e;
+            return result[id] = data;
+        })
+
+        return result;
+    }
+
+    static idbToSate(array) {
+        let result = {};
+
+        array.map(e => {
+            let { id, notesId } = e;
+            return result[id] = [...notesId];
+        })
+
+        return result;
+    }
 }
 
