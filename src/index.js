@@ -1,12 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.jsx';
-import registerServiceWorker from './registerServiceWorker';
+import { BrowserRouter } from "react-router-dom";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+import NoteStore from './store';
 
-ReactDOM.render(<App />, document.getElementById('root'));
 
+
+
+const store = createStore(
+    NoteStore,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
+
+let render = () => ReactDOM.render(
+    <Provider store={store}>
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+    </Provider>,
+    document.getElementById('root')
+);
+
+
+
+render();
 module.hot.accept('./App.jsx', () => {
-    ReactDOM.render(<App />, document.getElementById('root'));
+    render();
 })
-
-registerServiceWorker();

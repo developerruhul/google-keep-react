@@ -1,0 +1,226 @@
+/* normalize */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Roboto;
+}
+
+body,html{
+    height: 100%;
+    width: 100%;
+}
+
+body{
+    background: #efefef;
+}
+
+
+
+
+
+
+/*main wrapper around everything of the app exporting from App component*/
+.js-wrapper {
+    position: relative;
+    height: calc(100% + 120px);
+    display: flex;
+    top: 60px;
+}
+
+
+
+
+.o-main{
+    width: calc(100% - 233px);
+    margin-left: 233px;
+    padding: 41px 0;
+}
+
+.c-main-form {
+    width: 80%;
+    max-width: 500px;
+    margin: 0 auto;
+    background: #ffffff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.16);
+    border-radius: 4px;
+    padding: 1em;
+}
+
+.o-main-layout{
+    max-width: 720px;
+    margin: 0 auto;
+    height: auto;
+    width: 90%;
+}
+
+
+.c-main-input{
+    border: none;
+    width: 100%;
+    word-break: break-all;
+    resize: vertical;
+    overflow: auto;
+}
+
+.c-main-form textarea:focus+div {
+    display: inline-block;
+}
+
+.c-main-input:focus{
+    outline: none;
+}
+
+
+
+
+.js-edit-mode .o-note {
+    transform: scale(0.85);
+}
+
+.c-note-title {
+    font-weight: 500;
+    font-size: 19px;
+    padding-bottom: 15px;
+    color: #2A2A2A;
+    font-family: sans-serif;
+}
+
+.c-note-description {
+    font-family: sans-serif;
+    font-size: 15px;
+    letter-spacing: 0.3px;
+}
+
+.c-note-footer {
+    font-size: 11px;
+    border-top: 1px solid lightgrey;
+    margin-top: 30px;
+    padding: 10px 5px;
+}
+
+
+
+.o-note [class*="js-decorate-"]{
+  color: #ffba00
+}
+
+
+.js-decorate-star {
+  position: absolute;
+  top: -12px;
+  right: -10px;
+  font-size: 26px;
+  color: #EFC90C;
+}
+
+.js-decorate-in-footer {
+  display: block;
+  padding-top: 5px;
+  color: #EFC90C;
+}
+
+
+.o-notes-header {
+    width: 100%;
+    height: auto;
+    margin-bottom: 3.5em;
+    padding: 5px 0px;
+    position: relative;
+}
+
+
+
+.o-notes-header-title {
+    font-size: 14px;
+    color: #818080;
+    float: left;
+    padding: 5px 0;
+}
+
+.o-notes-header-btn {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #F46A4E;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+
+.o-notes-header-btn:hover{
+    background: #e0e0e0;
+}
+
+
+
+
+
+.js-notes-selected-actions {
+    display: flex;
+    overflow: hidden;
+    transition: 0.2s all ease;
+    transform: scale(0);
+    float: right;
+}
+
+.js-edit-mode .js-notes-selected-actions {
+    transform: scale(1);
+}
+
+
+
+.js-edit-mode .o-note .o-samsung-checkbox {
+    transform: scale(1.3);
+}
+
+.o-samsung-checkbox input:checked + label {
+    background: rgb(244, 106, 78);
+    border: 0;
+}
+.o-samsung-checkbox input:checked + label:after{
+    transform: rotate(45deg) scale(1);
+}
+
+
+.c-notes-select-toggle{
+    margin-right: 20px;
+}
+.c-notes-select-toggle:hover {
+    background: none;
+}
+
+.c-notes-select-toggle span {
+    padding-right: 5px;
+    vertical-align: middle;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+
+
+.js-note-edit {
+    transition: 0.2s all ease;
+    transform: scale(1);
+    position: absolute;
+    right: 0;
+}
+.js-edit-mode .js-note-edit {
+    transform: scale(0);
+}
+
+
+
+.js-catergory-edit {
+    position: absolute;
+    right: 20px;
+    padding: 4px 6px;
+    transition: 0.2s background ease;
+    cursor: pointer;
+    top: -4px;
+}
+
+.js-catergory-edit:hover{
+    background: #e3e3e3;
+}
+

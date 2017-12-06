@@ -1,0 +1,58 @@
+.app__main__nav{
+    background: #e8e8e8;
+    width: 233px;
+    height: 100%;
+    box-shadow: 2px 0 2px -2px rgba(0, 0, 0, 0.16);
+    padding: 34px 0;
+    font-size: 12px;
+    position: fixed;
+}
+
+.app__main__nav i {
+    margin-right: 20px;
+    color: #A1A1A1;
+    font-size: 22px;
+}
+
+.app__main__nav .nav__link{
+    display: flex;
+    align-items: center;
+    padding: 8px 20px;
+    margin-top: 2px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+}
+
+.app__main__nav .nav__link:hover{
+    background: #d8d8d8;
+}
+
+.app__main__nav .active{
+    background: #d8d8d8;
+    font-weight: 700;
+    color: #F46A4E;
+}
+.app__main__nav .active i{
+    color: inherit;
+}
+
+.app__main__nav :first-child {
+    margin-top: 0 !important;
+}
+
+
+
+
+/*sections*/
+
+.link__category {
+    margin-top: 39px;
+    position: relative;
+}
+.link__category h3 {
+    padding: 0 22px;
+    margin-bottom: 12px;
+    letter-spacing: 0.3px;
+    font-size: 12px;
+}
