@@ -1,3 +1,11 @@
+.o-samsung-checkbox {
+    position: relative;
+    padding-left: 18px;
+    width: 18px !important;
+    height: 18px !important;
+    display: inline-block;
+}
+
 .o-samsung-checkbox input {
     width: 0;
     height: 0;
@@ -15,9 +23,20 @@
     transition: 0.2s transform,background ease !important;
     cursor: pointer;
 }
-.o-samsung-checkbox label:active{
-    transform: scale(0.8);
+
+.o-samsung-checkbox input:checked + label {
+    background: rgb(244, 106, 78);
+    border: 0;
 }
+
+.o-samsung-checkbox input:checked + label:after{
+    transform: rotate(45deg) scale(1);
+}
+
+.o-samsung-checkbox label:active{
+    transform: scale(0.7);
+}
+
 .o-samsung-checkbox label:after{
     content: '';
     left: 6px;
@@ -31,20 +50,7 @@
     pointer-events: none;
 }
 
-.o-samsung-checkbox {
-    position: relative;
-    padding-left: 18px;
-    width: 18px !important;
-    height: 18px !important;
-    display: inline-block;
-}
-
-
-.o-note .o-samsung-checkbox {
-    position: absolute;
-    top: -10px;
-    left: -10px;
-    z-index: 99;
-    transform: scale(0);
-    transition: 0.2s all ease;
+@keyframes scaling {
+    from{transform: scale(0.6)}
+    to{transform: scale(1)}
 }

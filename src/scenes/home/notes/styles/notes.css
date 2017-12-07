@@ -31,3 +31,12 @@
     transform: scale(1);
     min-width: 42%;
 }
+
+.o-note .o-samsung-checkbox {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    z-index: 99;
+    transform: scale(0);
+    transition: 0.2s all ease;
+}
