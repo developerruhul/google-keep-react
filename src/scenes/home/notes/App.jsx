@@ -22,6 +22,7 @@ class NotesContainer extends MainUtil {
                     toggleEditMode={this.toggleEditMode}
                     onChange={this.toggleAll}
                     checked={this.state.checkAll}
+                    deleteNote={this.deleteNote}
                 />
                 <NoteCreator
                     data={this.props.notes}
@@ -31,7 +32,6 @@ class NotesContainer extends MainUtil {
             </div>
         )
     }
-
 
     componentWillReceiveProps({ notes }) {
         this.extractIdFromNotes(notes);

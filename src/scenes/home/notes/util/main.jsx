@@ -44,4 +44,14 @@ export default class MainUtil extends React.Component {
             checkAll: false
         });
     }
+
+    deleteNote = () => {
+        this.props.dispatch({
+            type: "delete",
+            ids: (() => {
+                let keys = Object.keys(this.state.checkedNotesId)
+                return keys.filter(id => this.state.checkedNotesId[id]);
+            })()
+        })
+    }
 }
