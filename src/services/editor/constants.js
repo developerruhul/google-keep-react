@@ -1,0 +1,1 @@
+export const SUBMIT_NOTE = "SUBMIT_NOTE";

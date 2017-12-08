@@ -1,5 +1,5 @@
 import React from 'react';
-import Note from '../notes/note';
+import Note from '../note/note';
 import { Utils } from "../../../index";
 
 

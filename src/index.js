@@ -4,29 +4,30 @@ import App from './App.jsx';
 import { BrowserRouter } from "react-router-dom";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
-import NoteStore from './store';
+import { Reducers } from './store';
 
 
 
 
 const store = createStore(
-    NoteStore,
+    Reducers,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
 
 let render = () => ReactDOM.render(
-    <Provider store={store}>
-        <BrowserRouter>
+    <BrowserRouter>
+        <Provider store={store}>
             <App />
-        </BrowserRouter>
-    </Provider>,
+        </Provider>
+    </BrowserRouter>,
     document.getElementById('root')
 );
 
 
 
 render();
+
 module.hot.accept('./App.jsx', () => {
     render();
 })

@@ -3,10 +3,10 @@ import Header from './header/header';
 import './styles/notes.css';
 import { connect } from "react-redux";
 import NoteCreator from './components/noteCreator';
-import MainUtil from './util/main';
+import { extractIdFromNotes } from "../../../services/notes/actions";
 
 
-class NotesContainer extends MainUtil {
+class NotesContainer extends React.Component {
     state = {
         editMode: false,
         checkedNotesId: {},
@@ -34,11 +34,60 @@ class NotesContainer extends MainUtil {
     }
 
     componentWillReceiveProps({ notes }) {
-        this.extractIdFromNotes(notes);
+        this.props.extractIdFromNotes(notes);
+    }
+
+    toggleAll = () => {
+        let { checkedNotesId, checkAll } = this.state,
+            copy = { ...checkedNotesId };
+
+        for (const i in copy) {
+            if (copy.hasOwnProperty(i)) copy[i] = !checkAll;
+        }
+
+        this.setState(prev => ({
+            checkedNotesId: copy,
+            checkAll: !checkAll
+        }))
+    }
+
+    toggleEditMode = () => {
+        this.setState({ editMode: !this.state.editMode });
+    }
+
+    changeCheck = (id) => {
+        this.setState(prev => this.checkBoxStateChange(prev, id));
+    }
+
+    checkBoxStateChange(prev, id) {
+        return ({
+            checkedNotesId: {
+                ...prev.checkedNotesId,
+                [id]: !prev.checkedNotesId[id]
+            },
+            checkAll: false
+        });
+    }
+
+    deleteNote = () => {
+        this.props.dispatch({
+            type: "delete",
+            ids: (() => {
+                let keys = Object.keys(this.state.checkedNotesId)
+                return keys.filter(id => this.state.checkedNotesId[id]);
+            })()
+        })
     }
 
 }
 
 
-const stateToProps = ({ notes }) => ({ notes });
-export default connect(stateToProps)(NotesContainer);
+
+const stateToProps = ({ notes, extractID }) => ({ notes, extractID });
+
+const dispatchToProps = (dispatch) => ({
+    extractIdFromNotes: (notes) => dispatch(extractIdFromNotes(notes))
+})
+
+
+export default connect(stateToProps, dispatchToProps)(NotesContainer);
