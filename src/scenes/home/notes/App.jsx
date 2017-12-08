@@ -3,70 +3,43 @@ import Header from './header/header';
 import './styles/notes.css';
 import { connect } from "react-redux";
 import NoteCreator from './components/noteCreator';
-import { extractIdFromNotes } from "../../../services/notes/actions";
+import {
+    extractIdFromNotes,
+    toggleAll,
+    toggleEditMode,
+    toggleNote
+} from "../../../services/notes/actions";
 
 
 class NotesContainer extends React.Component {
-    state = {
-        editMode: false,
-        checkedNotesId: {},
-        checkAll: false
-    }
-
     render() {
-        const jsEditClass = this.state.editMode ? 'js-edit-mode' : '';
+        const jsEditClass = this.props.editMode ? 'js-edit-mode' : '';
+        const state = this.props;
 
         return (
             <div className={`o-notes-container ${jsEditClass}`}>
                 <Header
-                    toggleEditMode={this.toggleEditMode}
-                    onChange={this.toggleAll}
-                    checked={this.state.checkAll}
+                    toggleEditMode={() => state.toggleEditMode(state.editMode)}
+                    onChange={(id) => state.toggleAll(state.notes, state.checkAll)}
+                    checked={state.checkAll}
                     deleteNote={this.deleteNote}
                 />
                 <NoteCreator
-                    data={this.props.notes}
-                    onChange={this.changeCheck}
-                    state={this.state.checkedNotesId}
+                    data={state.notes}
+                    onChange={state.toggleNote}
+                    state={state.checkedNotesId}
                 />
             </div>
         )
     }
 
     componentWillReceiveProps({ notes }) {
-        this.props.extractIdFromNotes(notes);
-    }
+        let nextKey = Object.keys(notes).length,
+            oldKey = Object.keys(this.props.notes).length;
 
-    toggleAll = () => {
-        let { checkedNotesId, checkAll } = this.state,
-            copy = { ...checkedNotesId };
-
-        for (const i in copy) {
-            if (copy.hasOwnProperty(i)) copy[i] = !checkAll;
+        if (oldKey !== nextKey) {
+            this.props.extractIdFromNotes(notes);
         }
-
-        this.setState(prev => ({
-            checkedNotesId: copy,
-            checkAll: !checkAll
-        }))
-    }
-
-    toggleEditMode = () => {
-        this.setState({ editMode: !this.state.editMode });
-    }
-
-    changeCheck = (id) => {
-        this.setState(prev => this.checkBoxStateChange(prev, id));
-    }
-
-    checkBoxStateChange(prev, id) {
-        return ({
-            checkedNotesId: {
-                ...prev.checkedNotesId,
-                [id]: !prev.checkedNotesId[id]
-            },
-            checkAll: false
-        });
     }
 
     deleteNote = () => {
@@ -83,10 +56,15 @@ class NotesContainer extends React.Component {
 
 
 
-const stateToProps = ({ notes, extractID }) => ({ notes, extractID });
+const stateToProps = ({ notes, Notes: { checkedNotesId, editMode, checkAll } }) => ({
+    notes, checkedNotesId, editMode, checkAll
+});
 
 const dispatchToProps = (dispatch) => ({
-    extractIdFromNotes: (notes) => dispatch(extractIdFromNotes(notes))
+    extractIdFromNotes: (notes) => dispatch(extractIdFromNotes(notes)),
+    toggleAll: (ids, checkAll) => dispatch(toggleAll(ids, checkAll)),
+    toggleEditMode: (editMode) => dispatch(toggleEditMode(editMode)),
+    toggleNote: (id) => dispatch(toggleNote(id))
 })
 
 
