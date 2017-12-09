@@ -34,9 +34,15 @@ class IDB extends React.Component {
     )
 
     modify = (notes) => {
-        // return db.notes.add({ id: "ID", notes:  })
+        return db.notes.add({ id: "id", notes: {} })
+            .then(e => this.addToIDB(notes))
+            .catch(e => this.addToIDB(notes));
     }
 
+    addToIDB = (notes) => {
+        return db.notes.where('id').equals('id')
+            .modify(x => x.notes = notes)
+    }
 }
 
 
