@@ -4,7 +4,7 @@ import Header from './header/header';
 import Nav from './nav/Nav';
 import NotesContainer from './notes/App';
 import MainForm from './editor/App';
-import IDBFire from "../../services/firebase/index";
+import IDB from "../../services/idb/index";
 
 
 
@@ -19,9 +19,11 @@ export default class App extends React.Component {
                     <div className="o-main-layout">
                         <MainForm />
                         <NotesContainer />
-                        <IDBFire />
                     </div>
                 </main>
+
+                {/* IDB Database declarative style */}
+                <IDB />
 
             </main>
         )

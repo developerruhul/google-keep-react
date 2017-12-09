@@ -1,7 +1,7 @@
 import React from 'react';
 import './style/editor.css';
 import { connect } from "react-redux";
-import Editor from './services/index';
+import { noteSubmit } from "../../../services/editor/actions";
 
 
 class MainForm extends React.Component {
@@ -9,8 +9,8 @@ class MainForm extends React.Component {
         return (
             <form onSubmit={this.addNote} className="c-main-form">
                 <p>UNCATEGORIZED</p>
-                <input ref="title" className="c-main-input" placeholder="Title" type="text" />
-                <textarea ref="note" required wrap="hard" placeholder="Take a note..." className="c-main-input" rows="2"></textarea>
+                <input ref={e => this.title = e} className="c-main-input" placeholder="Title" type="text" />
+                <textarea ref={e => this.note = e} required wrap="hard" placeholder="Take a note..." className="c-main-input" rows="2"></textarea>
                 <button type="submit"> DONE </button>
             </form>
         )
@@ -18,10 +18,16 @@ class MainForm extends React.Component {
 
     addNote = (e) => {
         e.preventDefault();
-        Editor.processNote.apply(this);
+        this.props.addNote(this.title.value, this.note.value);
+        this.note.value = ""; this.title.value = "";
     }
 
 }
 
 
-export default connect()(MainForm);
+
+const mapDispatchToProps = (dispatch) => ({
+    addNote: (title, note) => dispatch(noteSubmit(title, note))
+})
+
+export default connect(undefined, mapDispatchToProps)(MainForm);
