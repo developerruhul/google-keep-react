@@ -34,7 +34,7 @@ class IDB extends React.Component {
     )
 
     modify = (notes) => {
-        return db.notes.where('ID').modify(notes);
+        // return db.notes.add({ id: "ID", notes:  })
     }
 
 }
