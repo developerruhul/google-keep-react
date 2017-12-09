@@ -81,8 +81,8 @@ export class Util {
         let result = {};
 
         array.map(e => {
-            let { id, notesId } = e;
-            return result[id] = [...notesId];
+            let { id, ...other } = e;
+            return result[id] = { ...other };
         })
 
         return result;

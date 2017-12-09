@@ -30,7 +30,6 @@ export function Notes(state = initialState, action) {
             };
 
         case actions.TOGGLE_NOTE:
-            console.log(action);
             return {
                 ...state,
                 checkAll: false,

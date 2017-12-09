@@ -4,6 +4,7 @@ import Header from './header/header';
 import Nav from './nav/Nav';
 import NotesContainer from './notes/App';
 import MainForm from './editor/App';
+import IDB from "../../services/idb/index";
 
 
 
@@ -20,6 +21,9 @@ export default class App extends React.Component {
                         <NotesContainer />
                     </div>
                 </main>
+
+                {/* IDB Database declarative style */}
+                <IDB />
 
             </main>
         )

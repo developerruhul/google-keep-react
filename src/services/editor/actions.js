@@ -12,3 +12,14 @@ export const noteSubmit = (title, note) => ({
         category: 'uncategorized'
     }
 })
+
+export const deleteNote = ({ checkedNotesId, notes }) => {
+    let ids = Object.keys(checkedNotesId).filter(id => checkedNotesId[id]);
+    let result = { ...notes };
+    ids.forEach(id => delete result[id]);
+
+    return {
+        type: actions.DELETE_NOTE,
+        notes: result
+    };
+}

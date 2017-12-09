@@ -14,18 +14,17 @@ export const extractIdFromNotes = (notes) => {
     }
 }
 
-export const toggleAll = (ids, checkAll) => {
-    let copy = { ...ids };
-
+export const toggleAll = ({ checkAll, checkedNotesId }) => {
+    let copy = { ...checkedNotesId };
     for (const i in copy) {
         if (copy.hasOwnProperty(i)) copy[i] = !checkAll;
     }
 
     return {
-        type: actions.CHECK_ALL,
+        checkAll: !checkAll,
         checkedNotesId: copy,
-        checkAll: !checkAll
-    }
+        type: actions.CHECK_ALL
+    };
 }
 
 export const toggleEditMode = (editMode) => ({

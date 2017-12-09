@@ -3,6 +3,7 @@ import Header from './header/header';
 import './styles/notes.css';
 import { connect } from "react-redux";
 import NoteCreator from './components/noteCreator';
+import { deleteNote } from "../../../services/editor/actions";
 import {
     extractIdFromNotes,
     toggleAll,
@@ -11,23 +12,24 @@ import {
 } from "../../../services/notes/actions";
 
 
+
 class NotesContainer extends React.Component {
     render() {
         const jsEditClass = this.props.editMode ? 'js-edit-mode' : '';
-        const state = this.props;
+        const props = this.props;
 
         return (
             <div className={`o-notes-container ${jsEditClass}`}>
                 <Header
-                    toggleEditMode={() => state.toggleEditMode(state.editMode)}
-                    onChange={(id) => state.toggleAll(state.notes, state.checkAll)}
-                    checked={state.checkAll}
-                    deleteNote={this.deleteNote}
+                    toggleEditMode={() => props.toggleEditMode(props.editMode)}
+                    onChange={() => props.toggleAll(props)}
+                    checked={props.checkAll}
+                    deleteNote={() => props.deleteNote(props)}
                 />
                 <NoteCreator
-                    data={state.notes}
-                    onChange={state.toggleNote}
-                    state={state.checkedNotesId}
+                    data={props.notes}
+                    onChange={props.toggleNote}
+                    state={props.checkedNotesId}
                 />
             </div>
         )
@@ -42,30 +44,24 @@ class NotesContainer extends React.Component {
         }
     }
 
-    deleteNote = () => {
-        this.props.dispatch({
-            type: "delete",
-            ids: (() => {
-                let keys = Object.keys(this.state.checkedNotesId)
-                return keys.filter(id => this.state.checkedNotesId[id]);
-            })()
-        })
-    }
-
 }
 
 
 
 const stateToProps = ({ notes, Notes: { checkedNotesId, editMode, checkAll } }) => ({
-    notes, checkedNotesId, editMode, checkAll
+    notes: notes, checkedNotesId, editMode, checkAll
 });
 
 const dispatchToProps = (dispatch) => ({
     extractIdFromNotes: (notes) => dispatch(extractIdFromNotes(notes)),
-    toggleAll: (ids, checkAll) => dispatch(toggleAll(ids, checkAll)),
-    toggleEditMode: (editMode) => dispatch(toggleEditMode(editMode)),
-    toggleNote: (id) => dispatch(toggleNote(id))
-})
 
+    toggleAll: (props) => dispatch(toggleAll(props)),
+
+    toggleEditMode: (editMode) => dispatch(toggleEditMode(editMode)),
+
+    toggleNote: (id) => dispatch(toggleNote(id)),
+
+    deleteNote: (props) => dispatch(deleteNote(props))
+})
 
 export default connect(stateToProps, dispatchToProps)(NotesContainer);
