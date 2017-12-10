@@ -3,22 +3,33 @@
     width: 233px;
     height: 100%;
     box-shadow: 2px 0 2px -2px rgba(0, 0, 0, 0.16);
-    padding: 34px 0;
+    padding: 25px 0;
     font-size: 12px;
     position: fixed;
+    transition: 0.2s transform ease;
+    transform: translatex(0);
+}
+
+.hide__main__nav .app__main__nav{
+    transform: translatex(-235px);
 }
 
 .app__main__nav i {
-    margin-right: 20px;
-    color: #A1A1A1;
-    font-size: 22px;
+    margin-right: 25px;
+    color: #5d5d5d;
+    font-size: 24px;
+}
+
+.link-icon{
+    opacity: 0.6;
+    margin-right: 25px;
 }
 
 .app__main__nav .nav__link{
     display: flex;
     align-items: center;
-    padding: 8px 20px;
-    margin-top: 2px;
+    padding: 10px 20px;
+    margin-bottom: 5px;
     font-weight: 500;
     letter-spacing: 0.3px;
     cursor: pointer;
@@ -47,12 +58,40 @@
 /*sections*/
 
 .link__category {
-    margin-top: 39px;
     position: relative;
+    border-top: 1px solid lightgrey;
+    padding-top: 29px;
 }
 .link__category h3 {
     padding: 0 22px;
-    margin-bottom: 12px;
+    margin-bottom: 29px;
     letter-spacing: 0.3px;
-    font-size: 12px;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+
+/* category  edit*/
+.js-category{
+    position: relative;
+    height: auto;
+    width: 100%;
+}
+
+.js-catergory-editbtn{
+    position: absolute;
+    top: -3px;
+    right: 20px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-weight: 500;
+}
+.js-catergory-editbtn:hover{
+    background: lightgray;
+}
+
+
+/* all notes */
+.all__notes{
+    margin-bottom: 10px !important;
 }
