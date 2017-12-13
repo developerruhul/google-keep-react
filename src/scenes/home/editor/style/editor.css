@@ -1,19 +1,16 @@
-.c-main-form input {
-    margin-bottom: 1em;
-    font-size: 16px;
+.c-main-editor {
+    width: 80%;
+    height: auto;
+    background: rgb(250, 250, 250);
+    margin: 0 auto;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    border-radius: 3px;
+    transition: 0.4s all ease;
 }
 
-.c-main-form div {
-    font-size: 14px;
-    font-weight: 500;
-    margin-top: 1.25em ;
-    margin-right: 2em;
-    display: inline-block;
-    padding: 0.2em 0.3em;
-    border-radius: 2px;
-    cursor: pointer;
-    display: none;
-}
-.c-main-form div:hover {
-    background: lightgrey;
+/* .editor-opened is the class
+ that's gonna toggle the editor appearence */
+
+.editor-opened .o-editor-header, .editor-opened .o-editor-footer {
+    display: flex;
 }

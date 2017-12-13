@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles.css';
+import './style/styles.css';
 import EditButton from './components/editbtn';
 import HeaderActions from './components/headerActions';
 

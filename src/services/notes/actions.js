@@ -27,11 +27,6 @@ export const toggleAll = ({ checkAll, checkedNotesId }) => {
     };
 }
 
-export const toggleEditMode = (editMode) => ({
-    type: actions.TOGGLE_EDIT_MODE,
-    editMode: !editMode
-})
-
 export const toggleNote = (id) => ({
     type: actions.TOGGLE_NOTE,
     id

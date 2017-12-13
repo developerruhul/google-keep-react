@@ -4,24 +4,26 @@ import './styles/notes.css';
 import { connect } from "react-redux";
 import NoteCreator from './components/noteCreator';
 import { deleteNote } from "../../../services/editor/actions";
+
 import {
     extractIdFromNotes,
     toggleAll,
-    toggleEditMode,
     toggleNote
 } from "../../../services/notes/actions";
 
 
 
+
+
 class NotesContainer extends React.Component {
+
     render() {
-        const jsEditClass = this.props.editMode ? 'js-edit-mode' : '';
         const props = this.props;
 
         return (
-            <div className={`o-notes-container ${jsEditClass}`}>
+            <div ref={e => this.parent = e} className="o-notes-container">
                 <Header
-                    toggleEditMode={() => props.toggleEditMode(props.editMode)}
+                    toggleEditMode={this.toggleEditMode}
                     onChange={() => props.toggleAll(props)}
                     checked={props.checkAll}
                     deleteNote={() => props.deleteNote(props)}
@@ -35,6 +37,9 @@ class NotesContainer extends React.Component {
         )
     }
 
+
+
+
     componentWillReceiveProps({ notes }) {
         let nextKey = Object.keys(notes).length,
             oldKey = Object.keys(this.props.notes).length;
@@ -44,7 +49,19 @@ class NotesContainer extends React.Component {
         }
     }
 
+
+
+    toggleEditMode = () => {
+        const classList = this.parent.classList;
+        classList.toggle("js-edit-mode", !classList.contains("js-edit-mode"))
+    }
+
+
+
+
 }
+
+
 
 
 
@@ -52,16 +69,20 @@ const stateToProps = ({ notes, Notes: { checkedNotesId, editMode, checkAll } }) 
     notes: notes, checkedNotesId, editMode, checkAll
 });
 
+
+
+
+
+
 const dispatchToProps = (dispatch) => ({
     extractIdFromNotes: (notes) => dispatch(extractIdFromNotes(notes)),
 
     toggleAll: (props) => dispatch(toggleAll(props)),
 
-    toggleEditMode: (editMode) => dispatch(toggleEditMode(editMode)),
-
     toggleNote: (id) => dispatch(toggleNote(id)),
 
     deleteNote: (props) => dispatch(deleteNote(props))
 })
+
 
 export default connect(stateToProps, dispatchToProps)(NotesContainer);
