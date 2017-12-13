@@ -17,10 +17,10 @@
     font-size: 14px;
     font-weight: 600;
     letter-spacing: 0.5px;
-    color: #F46A4E;
     padding: 5px 10px;
     cursor: pointer;
     transition: 0.1s transform ease;
+    color: var(--primary-color)
 }
 
 .js-notes-selected-actions .o-notes-header-btn:active{

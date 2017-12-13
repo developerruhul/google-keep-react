@@ -1,5 +1,5 @@
 .app__main__nav{
-    background: #e8e8e8;
+    background: var(--secondaryColor);
     width: 233px;
     height: 100%;
     box-shadow: 2px 0 2px -2px rgba(0, 0, 0, 0.16);
@@ -8,6 +8,7 @@
     position: fixed;
     transition: 0.2s transform ease;
     transform: translatex(0);
+    display: block !important;
 }
 
 .hide__main__nav .app__main__nav{

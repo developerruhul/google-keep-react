@@ -1,0 +1,34 @@
+[contenteditable=true]:empty:before {
+    content: attr(placeholder);
+    display: block;
+    cursor: text;
+    color: #a7a7a7;
+}
+
+.o-editor-body {
+    width: 100%;
+    min-height: 200px;
+}
+
+.editor-section {
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+}
+
+.category-editor {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--primary-color);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.title-editor {
+    margin: 15px 0;
+    font-size: 17px;
+}
+
+.note-editor {
+    font-size: 17px;
+}

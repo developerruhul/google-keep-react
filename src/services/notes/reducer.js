@@ -3,8 +3,7 @@ import * as actions from './constants';
 
 const initialState = {
     checkedNotesId: {},
-    checkAll: false,
-    editMode: false
+    checkAll: false
 };
 
 
@@ -23,11 +22,7 @@ export function Notes(state = initialState, action) {
                 checkAll: action.checkAll
             }
 
-        case actions.TOGGLE_EDIT_MODE:
-            return {
-                ...state,
-                editMode: action.editMode
-            };
+        
 
         case actions.TOGGLE_NOTE:
             return {
