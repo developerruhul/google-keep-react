@@ -2,33 +2,51 @@
     content: attr(placeholder);
     display: block;
     cursor: text;
-    color: #a7a7a7;
+    color: #888888;
 }
 
+
+/* initial stage */
 .o-editor-body {
     width: 100%;
-    min-height: 200px;
+    min-height: 30px;
 }
-
 .editor-section {
-    padding: 20px;
     width: 100%;
     height: 100%;
 }
-
 .category-editor {
     font-size: 12px;
     font-weight: 600;
     color: var(--primary-color);
     text-decoration: underline;
     cursor: pointer;
+    display: none;
+    padding: 15px;
 }
+
+
 
 .title-editor {
     margin: 15px 0;
     font-size: 17px;
+    padding: 15px;
 }
 
 .note-editor {
-    font-size: 17px;
+    font-size: 14px;
+    padding: 15px;
+    font-weight: 300;
+}
+
+
+
+
+/* when editor opened */
+.editor-opened .o-editor-body{
+    min-height: 200px;
+}
+
+.editor-opened .category-editor{
+    display: block;
 }
