@@ -13,7 +13,6 @@ export default class Header extends React.Component {
                 </section>
 
                 <section className="editor-actions">
-                    <section onClick={this.props.openEditor} role="button" className="editor-action-btn">CANCEL</section>
                     <section role="button" className="editor-action-btn">SAVE</section>
                 </section>
             </header>

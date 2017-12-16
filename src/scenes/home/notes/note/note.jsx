@@ -2,6 +2,7 @@ import React from 'react';
 import { CheckboxInput } from '../../../index';
 import { Utils } from "../../../index";
 import './style/note.css';
+import Editors from '../components/noteEditor/app';
 
 
 const Note = ({ filter, title, note, modified, state, ...other }) => (
@@ -11,8 +12,7 @@ const Note = ({ filter, title, note, modified, state, ...other }) => (
             checked={state[other.id]}
         />
 
-        <h1 className="c-note-title">{title}</h1>
-        <p className="c-note-description">{Utils.truncate(note)}</p>
+        <Editors />
 
         <footer className="c-note-footer">
             <span>Modified: {modified}</span>
