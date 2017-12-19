@@ -65,9 +65,13 @@ class NotesContainer extends React.Component {
 
 
 
-const stateToProps = ({ notes, Notes: { checkedNotesId, editMode, checkAll } }) => ({
-    notes: notes, checkedNotesId, editMode, checkAll
-});
+const stateToProps = ({
+    Editor: { notes },
+    Notes: { checkedNotesId, editMode, checkAll }
+    
+    }) => ({
+        notes: notes, checkedNotesId, editMode, checkAll
+    });
 
 
 

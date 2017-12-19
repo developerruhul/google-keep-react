@@ -29,7 +29,13 @@ class IDB extends React.Component {
 
     populateState = () => (
         db.transaction("r", db.notes, async () => {
-            return await db.notes.toArray().then(e => e[0].notes);
+            return await db.notes.toArray().then(e => {
+                try {
+                    e[0].notes
+                } catch (e) {
+                    return;
+                }
+            });
         })
     )
 
@@ -46,7 +52,7 @@ class IDB extends React.Component {
 }
 
 
-const mapStateToProps = ({ notes }) => ({
+const mapStateToProps = ({ Editor: { notes } }) => ({
     notes
 })
 

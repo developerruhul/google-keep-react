@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import { notes } from "./services/editor/reducer";
+import { Editor } from "./services/editor/reducer";
 import { Notes } from "./services/notes/reducer";
 
 export const Reducers = combineReducers({
-    notes,
+    Editor,
     Notes
 })

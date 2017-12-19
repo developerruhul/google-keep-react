@@ -2,7 +2,7 @@ import React from 'react';
 import './style.css';
 
 
-export default class Header extends React.Component {
+export default class Footer extends React.Component {
     render() {
         return (
             <header className="o-editor-header">
@@ -12,9 +12,7 @@ export default class Header extends React.Component {
                     <i className="material-icons">timer</i>
                 </section>
 
-                <section className="editor-actions">
-                    <section role="button" className="editor-action-btn">SAVE</section>
-                </section>
+                <section role="button" className="editor-action-btn">SAVE</section>
             </header>
         )
     }

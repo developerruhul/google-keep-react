@@ -1,15 +1,9 @@
-[contenteditable=true]:empty:before {
-    content: attr(placeholder);
-    display: block;
-    cursor: text;
-    color: #888888;
-}
-
 /* initial stage */
 
 .o-editor-body {
     width: 100%;
-    min-height: 30px;
+    height: auto;
+    padding: 0.1px;
 }
 
 .editor-section {
@@ -18,49 +12,41 @@
 }
 
 .category-editor {
+    display: none;
+    margin: 10px 15px 3px;
+}
+
+.category-editor span {
     font-size: 12px;
     font-weight: 600;
     color: var(--primary-color);
     text-decoration: underline;
     cursor: pointer;
-    display: none;
-    padding: 15px;
     font-family: Roboto, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    float: right;
+}
+
+.category-editor span:active {
+    background: lightgrey;
 }
 
 .note_desc_editor {
     font-size: 14px;
-    padding: 15px;
-    font-family: 'Roboto Slab';
+    padding: 12px 15px 15px 15px;
+    font-family: 'Roboto Slab', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 46px;
 }
 
 .note_title_editor {
-    padding: 15px;
-    display: none;
-}
-
-.note_title_editor input{
-    border: none;
-    font-family: 'Roboto Condensed','segoe ui';
+    font-family: 'Roboto Condensed', 'segoe ui';
     font-weight: 600;
     background: transparent;
     font-size: 16px;
+    padding: 10px 15px;
+    display: none;
 }
-
-.note_title_editor input:focus{
-    outline: none;
-}
-
 
 /* when editor opened */
 
-.editor-opened .o-editor-body {
-    min-height: 200px;
-    padding: 10px;
-}
-
-.editor-opened .category-editor,
-.editor-opened .note_title_editor {
+.editor-opened .category-editor, .editor-opened .note_title_editor {
     display: block;
 }

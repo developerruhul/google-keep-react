@@ -1,2 +1,4 @@
 export const SUBMIT_NOTE = "SUBMIT_NOTE";
 export const DELETE_NOTE = "DELETE_NOTE";
+export const CATEGORY_EDITMODE = "CATEGORY_EDITMODE";
+export const CATEGORY_CHANGE = "CATEGORY_CHANGE";
