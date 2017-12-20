@@ -1,8 +1,8 @@
 import React from 'react';
 import { CheckboxInput } from '../../../index';
-import { Utils } from "../../../index";
+// import { Utils } from "../../../index";
 import './style/note.css';
-import Editors from '../components/noteEditor/app';
+import Main from "../../../../components/editor-main/main";
 
 
 const Note = ({ filter, title, note, modified, state, ...other }) => (
@@ -12,12 +12,7 @@ const Note = ({ filter, title, note, modified, state, ...other }) => (
             checked={state[other.id]}
         />
 
-        <Editors />
 
-        <footer className="c-note-footer">
-            <span>Modified: {modified}</span>
-            {filter ? <i className="material-icons js-decorate-in-footer">{filter}</i> : null}
-        </footer>
     </article>
 );
 

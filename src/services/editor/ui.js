@@ -9,7 +9,7 @@ export const ui = (state = initialState, action) => {
         case actions.CATEGORY_EDITMODE:
             return {
                 ...state,
-                categoryEditMode: action.categoryEditMode
+                categoryEditMode: !state.categoryEditMode,
             }
 
         case actions.CATEGORY_CHANGE:

@@ -24,11 +24,10 @@ export const deleteNote = ({ checkedNotesId, notes }) => {
     };
 }
 
-export const changeEditMode = currentMode => ({
-    type: actions.CATEGORY_EDITMODE,
-    category_editmode: !currentMode
-})
-
+// export const changeEditMode = currentMode => ({
+//     type: actions.CATEGORY_EDITMODE,
+//     categoryEditmode: !currentMode
+// })
 export const categoryChange = category => ({
     type: actions.CATEGORY_CHANGE,
     category

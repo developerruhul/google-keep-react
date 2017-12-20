@@ -11,12 +11,13 @@
     height: 100%;
 }
 
-.category-editor {
+.editor-category {
     display: none;
     margin: 10px 15px 3px;
+    user-select: none;
 }
 
-.category-editor span {
+.editor-category span {
     font-size: 12px;
     font-weight: 600;
     color: var(--primary-color);
@@ -25,7 +26,7 @@
     font-family: Roboto, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.category-editor span:active {
+.editor-category span:active {
     background: lightgrey;
 }
 
@@ -47,6 +48,6 @@
 
 /* when editor opened */
 
-.editor-opened .category-editor, .editor-opened .note_title_editor {
+.editor-opened .editor-category, .editor-opened .note_title_editor {
     display: block;
 }

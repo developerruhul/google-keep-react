@@ -8,10 +8,12 @@
     transition: 0.4s all ease;
 }
 
+
 /* .editor-opened is the class
  that's gonna toggle the editor appearence */
 
-.editor-opened .o-editor-header, .editor-opened .o-editor-footer {
+.editor-opened .o-editor-header,
+.editor-opened .o-editor-footer {
     display: flex;
 }
 

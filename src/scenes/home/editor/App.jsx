@@ -1,3 +1,4 @@
+//@ts-check
 import React from 'react';
 import './style/editor.css';
 import { connect } from "react-redux";
@@ -5,7 +6,9 @@ import { noteSubmit } from "../../../services/editor/actions";
 import Main from "../../../components/editor-main/main";
 import Footer from "../../../components/editor-header/header";
 import onClickOutside from "react-onclickoutside";
-import { RichUtils, EditorState, convertToRaw } from "draft-js";
+import { RichUtils, EditorState, /*convertToRaw*/ } from "draft-js";
+import { categoryChange } from "../../../services/editor/actions";
+import { addCategory } from "../../..//services/category/actions";
 
 
 
@@ -25,6 +28,7 @@ class MainForm extends React.Component {
                     state={this.state}
                     handleKeyCommand={this.handleKeyCommand}
                     setNote={this.setLocalState}
+                    {...this.props}
                 />
 
                 <Footer />
@@ -53,10 +57,10 @@ class MainForm extends React.Component {
     }
 
 
-    
+
 
     // Ui methods
-    // handleClickOutside = _ => this.openEditor(false);  
+    handleClickOutside = _ => null //this.openEditor(false);
 
     openEditor = (shouldIopen = true) => {
         // if shouldIopen = false;
@@ -68,24 +72,24 @@ class MainForm extends React.Component {
         // save the data when editor closes
         // in this case when `shouldIopen = false`
         // and clear the inputs
-        if (!shouldIopen) {
-            // convert the inputs data into raw data to store 
-            // in the DB and restore them in the note
-            const title = convertToRaw(this.state.title.getCurrentContent()),
-                note = convertToRaw(this.state.note.getCurrentContent());
+        // if (!shouldIopen) {
+        //     convert the inputs data into raw data to store
+        //     in the DB and restore them in the note
+        //     const title = convertToRaw(this.state.title.getCurrentContent()),
+        //         note = convertToRaw(this.state.note.getCurrentContent());
 
 
 
-            // if nothings in the note field 
-            // we don't do anything
-            if (note.blocks[0].text !== '') {
+        //     if nothings in the note field
+        //     we don't do anything
+        //     if (note.blocks[0].text !== '') {
 
-                // dispatch addNote action to get things going
-                // this.props.addNote(title, note);
+        //         dispatch addNote action to get things going
+        //         this.props.addNote(title, note);
 
-            }
+        //     }
 
-        }
+        // }
     }
 
 
@@ -93,8 +97,22 @@ class MainForm extends React.Component {
 
 
 
-const mapDispatchToProps = (dispatch) => ({
+const mapStateToProps = ({
+    Editor: {
+        ui: {
+            categoryEditMode, category
+        }
+    },
+    Category: categories
+}) => ({ categoryEditMode, category, categories })
+
+const mapDispatchToProps = dispatch => ({
+    onCategoryChange: category => dispatch(categoryChange(category)),
+    changeCategoryEditMode: _ => dispatch({ type: "CATEGORY_EDITMODE" }),
+    addCategory: category => dispatch(addCategory(category)),
     addNote: (title, note) => dispatch(noteSubmit(title, note))
 })
 
-export default connect(undefined, mapDispatchToProps)(onClickOutside(MainForm));
+
+// @ts-ignore
+export default connect(mapStateToProps, mapDispatchToProps)(onClickOutside(MainForm));

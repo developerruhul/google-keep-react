@@ -31,9 +31,9 @@ class IDB extends React.Component {
         db.transaction("r", db.notes, async () => {
             return await db.notes.toArray().then(e => {
                 try {
-                    e[0].notes
+                    return e[0].notes
                 } catch (e) {
-                    return;
+                    return {};
                 }
             });
         })

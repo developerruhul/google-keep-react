@@ -1,5 +1,5 @@
 import React from "react";
-import { Editor, convertFromRaw, EditorState } from "draft-js";
+// import { Editor, convertFromRaw, EditorState } from "draft-js";
 
 export default class Editors extends React.Component {
     // state = {

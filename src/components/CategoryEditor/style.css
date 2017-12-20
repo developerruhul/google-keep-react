@@ -1,0 +1,61 @@
+.body{
+    color: rgba(0, 0, 0, 0.863);
+}
+
+.category__editor{
+    width: 225px;
+    height: auto;
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 0px 4px rgba(10, 10, 10, 0.2);
+    border-radius: 2px;
+    position: absolute;
+    z-index: 999;
+    overflow: hidden;
+    padding-top: 11px;
+    font-size: 13px;
+    margin: 5px 0;
+}
+
+
+/* editor header */
+.category__editor__header{
+    font-weight: 400;
+    font-size: 14px;
+    padding: 0 12px;
+}
+
+
+
+/* input for adding new categories */
+.category__editor__form {
+    width: 100%;
+    height: auto;
+    padding: 8px 12px;
+}
+.category__editor__form input{
+    width: 100%;
+    padding: 2px;
+    border: 1px solid lightgrey;
+    border-radius: 2px;
+}
+.category__editor__form input:focus{
+    outline: none;
+    border: 1px solid grey;
+}
+
+
+/* display all the categories */
+
+.category__editor__display{
+    padding: 6px 0;
+}
+
+.category__editor__display li {
+    list-style: none;
+    padding: 7px 12px;
+    cursor: pointer;
+}
+
+.category__editor__display li:hover{
+    background: rgb(223, 223, 223);
+}
