@@ -1,8 +1,18 @@
+//@ts-check
 import * as actions from "./constants";
+import {
+    EditorState
+} from "draft-js";
 
 
 
-const initialState = { categoryEditMode: false, category: 'UNCATEGORIZED' };
+const initialState = {
+    categoryEditMode: false,
+    category: 'UNCATEGORIZED',
+    note: EditorState.createEmpty(),
+    title: EditorState.createEmpty()
+};
+
 
 export const ui = (state = initialState, action) => {
     switch (action.type) {
@@ -18,7 +28,25 @@ export const ui = (state = initialState, action) => {
                 category: action.category
             }
 
+        case actions.TITLE_INPUT_CHANGE:
+            return {
+                ...state,
+                title: action.title
+            }
+
+        case actions.DESC_INPUT_CHANGE:
+            return {
+                ...state,
+                note: action.note
+            }
+
+        case "RESET_EDITOR":
+            return {
+                ...initialState
+            }
+
         default:
             return state;
+
     }
 }

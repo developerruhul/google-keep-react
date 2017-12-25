@@ -1,11 +1,15 @@
+//@ts-check
 import React from "react";
-import './style/style.css';
-import 'draft-js/dist/Draft.css';
 import Editor from "draft-js-plugins-editor";
 import createInlineToolbarPlugin from "draft-js-inline-toolbar-plugin";
 import "draft-js-inline-toolbar-plugin/lib/plugin.css";
-import { MainCategory } from "../MainCategory/app";
-import { TitleInput } from "../Titleinput/app";
+import { TitleInput } from "../../../../../components/Titleinput/app";
+import { MainCategory } from "../../../../../components/MainCategory/app";
+
+
+// editor's inline styling toolbar
+const inlineToolBarPlugin = createInlineToolbarPlugin();
+const { InlineToolbar } = inlineToolBarPlugin;
 
 
 
@@ -26,18 +30,9 @@ class Main extends React.Component {
 
 
 
-    constructor() {
-        super();
-
-        // editor's inline styling toolbar
-        this.inlineToolBarPlugin = createInlineToolbarPlugin();
-    }
-
 
     render() {
         const props = this.props;
-        const { InlineToolbar } = this.inlineToolBarPlugin;
-
 
         return (
             <main className="o-editor-body">
@@ -50,14 +45,14 @@ class Main extends React.Component {
 
 
                     {/* Description input */}
-                    <section id={this.props.id} className="note_desc_editor">
+                    <section className="note_desc_editor">
                         <Editor
                             onFocus={props.openEditor}
                             onChange={e => props.setNote(e, 'note')}
                             editorState={props.note}
                             handleKeyCommand={props.handleKeyCommand}
                             placeholder="Take a note..."
-                            plugins={[this.inlineToolBarPlugin]}
+                            plugins={[inlineToolBarPlugin]}
                         />
 
                         {/* floating action toolbar onSelect */}

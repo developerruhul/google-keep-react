@@ -20,3 +20,16 @@
 .c-main-editor.editor-opened {
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
 }
+
+
+
+/* title and category is hidden when editor is closed */
+.c-main-editor .editor-category, .c-main-editor .note_title_editor {
+    display: none;
+}
+
+
+/* editor title and category is visible when editor opens */
+.editor-opened .editor-category, .editor-opened .note_title_editor {
+    display: block;
+}

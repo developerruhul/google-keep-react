@@ -1,12 +1,12 @@
-.o-notes-cards-wrapper{
-    display: flex;
+.o-notes-wrapper {
+    /* display: flex; */
     width: 100%;
-    flex-flow: row wrap;
+    /* flex-flow: row wrap; */
     height: auto;
-    justify-content: space-between;
-    margin-top: 70px;
+    /* justify-content: space-between; */
+    /* margin-top: 70px; */
     height: auto;
-    align-items: flex-start;
+    /* align-items: flex-start; */
 }
 
 .o-notes-container {
@@ -16,20 +16,21 @@
 }
 
 .o-note {
-    flex-grow: 1;
     height: auto;
-    background: white;
-    margin-bottom: 10%;
-    border-radius: 4px;
-    box-shadow: 0 0 2px rgba(0,0,0,0.26);
-    max-width: 200px;
-    padding: 20px 10px 2px 20px ;
-    color: #848484;
-    position: relative;
+    margin: 10px;
+    border-radius: 1px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
     cursor: pointer;
-    transition: 0.3s all ease;
+    transition:ease margin,box-shadow,width,transform 0.2s ease-in;
     transform: scale(1);
-    min-width: 42%;
+    min-width: 30%;
+    background: #fafafa;
+    width: 30%;
+    will-change: margin,box-shadow,scroll-position,width,transform;
+}
+
+.o-note:hover {
+    box-shadow: 2px 4px 14px rgba(0, 0, 0, 0.24);
 }
 
 .o-note .o-samsung-checkbox {
@@ -39,4 +40,36 @@
     z-index: 99;
     transform: scale(0);
     transition: 0.2s all ease;
+}
+
+/* when the note is opened */
+.o-note.note-active{
+    position: fixed !important;
+    margin: 10% auto;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 999;
+    box-shadow: 2px 6px 16px 2px rgba(0, 0, 0,0.29);
+    width: 600px;
+    cursor: auto;
+}
+
+.active-note-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.285);
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    transition: 0.2s opacity,visibility ease;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.active-note-overlay.active{
+    opacity: 1;
+    visibility: inherit;
 }

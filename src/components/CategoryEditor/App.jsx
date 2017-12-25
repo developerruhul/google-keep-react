@@ -1,6 +1,8 @@
 import React from "react";
 import './style.css';
 
+
+
 export default class CategoryEditor extends React.Component {
     render() {
         return (
@@ -8,6 +10,8 @@ export default class CategoryEditor extends React.Component {
 
                 <h1 className="category__editor__header">Select category</h1>
 
+
+                {/* input field to add new categories */}
                 <form
                     onSubmit={this.submitCategory}
                     className="category__editor__form"
@@ -50,4 +54,5 @@ export default class CategoryEditor extends React.Component {
         this.props.addCategory(this.input.value);
         this.input.value = ''
     }
+
 }

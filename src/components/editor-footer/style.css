@@ -3,7 +3,7 @@
     height: 37px;
     justify-content: space-between;
     align-items: center;
-    /* hide by default and then 
+    /* hide by default and then
     editor onFocus : we want to show it */
     display: none;
     padding: 4px 0;
@@ -17,7 +17,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    min-width: 30%;
+    min-width: 15%;
     height: 100%;
     padding-left: 12px;
 }
@@ -31,12 +31,8 @@
     font-size: 22px;
 }
 
-.editor-filter i.aplied-filter {
-    color: var(--primary-color);
-}
-
-.o-editor-header i:hover {
-    color: var(--primary-color);
+.editor-filter i.applied-filter {
+    color: var(--primary-color) !important;
 }
 
 

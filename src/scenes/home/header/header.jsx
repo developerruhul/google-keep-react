@@ -9,7 +9,7 @@ export default class Header extends React.Component {
                     <i onClick={this.toggleNav} className="material-icons js-app-menu">menu</i>
 
                     <div role="heading" className="c-samsung-title">
-                        <h1>Samsung Notes</h1>
+                        <h1>Samgsung Note</h1>
                         <sup className="c-super-like">Web</sup>
                     </div>
                 </section>
