@@ -31,3 +31,8 @@ export const toggleNote = (id) => ({
     type: actions.TOGGLE_NOTE,
     id
 })
+
+export const toggleActiveNote = (note) => ({
+    type: actions.TOGGLE_ACTIVE_NOTE,
+    note
+})

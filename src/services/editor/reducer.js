@@ -1,23 +1,10 @@
-import * as actions from './constants';
+import { notes } from "./index";
+import { ui } from "./ui";
+import { combineReducers } from "redux";
+import { footer } from "./editorFooter";
 
-export function notes(state = {}, action) {
-    switch (action.type) {
-        case actions.SUBMIT_NOTE:
-            return {
-                ...state,
-                [action.id]: action.note
-            }
-
-        case "DELETE_NOTE":
-            return {
-                ...action.notes
-            }
-
-        case "populate":
-            return {
-                ...action.notes
-            }
-
-        default: return state;
-    }
-}
+export const Editor = combineReducers({
+    notes,
+    ui,
+    footer
+})

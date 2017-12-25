@@ -17,16 +17,16 @@ textarea,
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: Roboto;
 }
 
 body,html{
     height: 100%;
     width: 100%;
+    font-family: Roboto,'segoe ui';
 }
 
 body{
-    background: #efefef;
+    background: rgb(232, 232, 232);
 }
 
 
