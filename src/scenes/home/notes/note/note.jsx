@@ -73,19 +73,29 @@ class Note extends React.Component {
 
     // ui method
     makeNoteActive = ({ currentTarget: { classList } }) => {
+        const makeItActive = _ => {
+            if (!this.props.activeNoteClass && !this.props.editMode) {
 
-        if (!this.props.activeNoteClass && !this.props.editMode) {
+                // store the id so that overlay knows which note to modify
+                this.props.clickOnNote(this.props.id);
 
-            // store the id so that overlay knows which note to modify
-            this.props.clickOnNote(this.props.id);
+                // make note active
+                classList.add('active');
 
-            // make note active
-            classList.add('active');
-
-            // add a overaly
-            document.getElementById('activeNoteOverlay')
-                .classList.add("active");
+                // add a overaly
+                document.getElementById('activeNoteOverlay')
+                    .classList.add("active");
+            }
         }
+
+        // check if the note is lock
+        if (this.state.lock && !this.props.activeNoteClass) {
+            let userInput = prompt("Enter the password");
+            if (userInput) userInput === this.state.lock ? makeItActive() : alert("Wrong password");
+        } else {
+            makeItActive();
+        }
+
     }
 
 
@@ -116,7 +126,7 @@ class Note extends React.Component {
 
     // footer methods
     lockChange = () => {
-        const pass = !this.state.lock ? prompt("Enter a password") : false;
+        const pass = this.state.lock ? false : prompt("Enter a password");
         this.setState({ lock: pass });
     }
 
