@@ -10,6 +10,9 @@ export const Category = (state = [], action) => {
                 action.category
             ]
 
+        case "populate":
+            return action.Category;
+
         default:
             return state;
     }

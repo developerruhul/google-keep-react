@@ -1,7 +1,6 @@
 import db from "./idb";
 import React from "react";
 import { connect } from "react-redux";
-import isEqual from "lodash.isequal";
 
 
 class IDB extends React.Component {
@@ -16,17 +15,12 @@ class IDB extends React.Component {
     dispatchPopulate = (e) => {
         this.props.dispatch({
             type: "populate",
-            notes: e
+            ...e
         });
     }
 
-    componentWillReceiveProps({ notes }) {
-        let nextKey = Object.keys(notes).length,
-            oldKey = Object.keys(this.props.notes).length;
-
-        if (oldKey !== nextKey) {
-            this.modify(notes);
-        }
+    componentWillReceiveProps({ notes, Category, action }) {
+        return this.props.action !== action ? this.modify(notes,Category) : null;
     }
 
 
@@ -34,7 +28,10 @@ class IDB extends React.Component {
         db.transaction("r", db.notes, async () => {
             return await db.notes.toArray().then(e => {
                 try {
-                    return e[0].notes
+                    return {
+                        notes: e[0].notes,
+                        Category: e[0].category
+                    }
                 } catch (e) {
                     return {};
                 }
@@ -42,21 +39,24 @@ class IDB extends React.Component {
         })
     )
 
-    modify = (notes) => {
-        return db.notes.add({ id: "id", notes: {} })
-            .then(e => this.addToIDB(notes))
-            .catch(e => this.addToIDB(notes));
+    modify = (notes, category) => {
+        return db.notes.add({ id: "id", notes: {}, category: [] })
+            .then(e => this.addToIDB(notes, category))
+            .catch(e => this.addToIDB(notes, category));
     }
 
-    addToIDB = (notes) => {
+    addToIDB = (notes, category) => {
         return db.notes.where('id').equals('id')
-            .modify(x => x.notes = notes)
+            .modify(x => {
+                x.notes = notes;
+                x.category = category
+            })
     }
 }
 
 
-const mapStateToProps = ({ Editor: { notes } }) => ({
-    notes
-})
+const mapStateToProps = ({ Editor: { notes }, Category, action }) => ({
+    notes, Category, action
+});
 
 export default connect(mapStateToProps)(IDB);

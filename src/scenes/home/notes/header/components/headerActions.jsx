@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckboxInput } from '../../../../index';
+// import { CheckboxInput } from '../../../../index';
 
 
 export default function HeaderActions({ toggleEditMode, onChange, ...other }) {

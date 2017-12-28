@@ -1,8 +1,8 @@
 import React from 'react';
-import { CheckboxInput } from '../../../index';
+// import { CheckboxInput } from '../../../index';
 // import { Utils } from "../../../index";
 import './style/note.css';
-import { EditorState, convertFromRaw, RichUtils } from "draft-js";
+import { EditorState, convertFromRaw, RichUtils, convertToRaw } from "draft-js";
 import Main from "../../../../components/editor-main/main";
 import Footer from "../../../../components/editor-footer/footer";
 import { connect } from "react-redux";
@@ -33,9 +33,7 @@ class Note extends React.Component {
         const {
             toggleNote,
             checkedNotesId,
-            id,
-            star,
-            lock
+            id
         } = this.props;
 
 
@@ -74,18 +72,26 @@ class Note extends React.Component {
     // ui method
     makeNoteActive = ({ currentTarget: { classList } }) => {
 
-        if (!this.props.activeNoteClass && !this.props.editMode) {
+        const makeItActive = _ => {
+            if (!this.props.activeNoteClass && !this.props.editMode) {
 
-            // store the id so that overlay knows which note to modify
-            this.props.clickOnNote(this.props.id);
+                this.props.clickOnNote(this.props.id);
 
-            // make note active
-            classList.add('active');
+                classList.add('active');
 
-            // add a overaly
-            document.getElementById('activeNoteOverlay')
-                .classList.add("active");
+                // add a overaly
+                document.getElementById('activeNoteOverlay').classList.add("active");
+            }
         }
+
+        // check if the note is lock
+        if (this.state.lock && !this.props.activeNoteClass) {
+            let userInput = prompt("Enter the password");
+            if (userInput) userInput === this.state.lock ? makeItActive() : alert("Wrong password");
+        } else {
+            makeItActive();
+        }
+
     }
 
 
@@ -112,18 +118,27 @@ class Note extends React.Component {
         return 'not-handled';
     }
 
+    // save note when note closes
+    componentWillReceiveProps({activeNoteClass}){
+        if(!activeNoteClass && this.props.activeNoteClass !== activeNoteClass){
+            this.saveNote();
+        }
+    }
 
 
     // footer methods
     lockChange = () => {
-        const pass = !this.state.lock ? prompt("Enter a password") : false;
+        const pass = this.state.lock ? false : prompt("Enter a password");
         this.setState({ lock: pass });
     }
 
     starChange = () => this.setState(prev => ({ star: !prev.star }));
 
     saveNote = () => {
-        this.props.saveNote({ ...this.state, id: this.props.id })
+        let title = convertToRaw(this.state.title.getCurrentContent());
+        let note = convertToRaw(this.state.note.getCurrentContent());
+
+        this.props.saveNote({ ...this.state, title, note, id: this.props.id });
     }
 
 
