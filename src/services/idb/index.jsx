@@ -1,7 +1,6 @@
 import db from "./idb";
 import React from "react";
 import { connect } from "react-redux";
-import isEqual from "lodash.isequal";
 
 
 class IDB extends React.Component {
@@ -20,13 +19,8 @@ class IDB extends React.Component {
         });
     }
 
-    componentWillReceiveProps({ notes, Category }) {
-        let nextKey = Object.keys(notes).length,
-            oldKey = Object.keys(this.props.notes).length;
-
-        if (oldKey !== nextKey) {
-            this.modify(notes, Category);
-        }
+    componentWillReceiveProps({ notes, Category, action }) {
+        return this.props.action !== action ? this.modify(notes,Category) : null;
     }
 
 
@@ -61,8 +55,8 @@ class IDB extends React.Component {
 }
 
 
-const mapStateToProps = ({ Editor: { notes }, Category }) => ({
-    notes, Category
+const mapStateToProps = ({ Editor: { notes }, Category, action }) => ({
+    notes, Category, action
 });
 
 export default connect(mapStateToProps)(IDB);
