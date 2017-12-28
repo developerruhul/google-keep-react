@@ -1,18 +1,16 @@
-.o-editor-header {
+.o-editor-footer {
     width: 100%;
     height: 37px;
     justify-content: space-between;
     align-items: center;
-    /* hide by default and then
-    editor onFocus : we want to show it */
-    display: none;
     padding: 4px 0;
     box-sizing: content-box;
+    display: flex;
 }
 
 
 
-/* editor header icons */
+/* editor footer icons */
 .editor-filter {
     display: flex;
     justify-content: space-between;

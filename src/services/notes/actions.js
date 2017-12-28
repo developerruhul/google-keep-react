@@ -36,3 +36,7 @@ export const toggleActiveNote = (note) => ({
     type: actions.TOGGLE_ACTIVE_NOTE,
     note
 })
+
+export const toggleEditMode = () => ({
+    type: actions.TOGGLE_EDIT_MODE
+})

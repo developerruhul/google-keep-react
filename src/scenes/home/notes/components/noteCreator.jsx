@@ -1,37 +1,50 @@
 import React from 'react';
 import Note from '../note/note';
 import { Utils } from "../../../index";
-import Masonry from "react-masonry-component";
+import Macy from "macy";
 
 
 class NoteCreator extends React.Component {
     render() {
-        const { data, ...other } = this.props;
-
-        const items = Utils.objToArray(data).map(item => (
+        const items = Utils.objToArray(this.props.notes).map(item => (
             <Note
                 key={item.id}
-                title={item.title}
-                note={item.note}
-                modified={item.modified}
-                filter={item.filter}
-                id={item.id}
-                {...other}
+                {...item}
+                {...this.props}
             />
         ));
 
 
         return (
-            <Masonry
-                className={"o-notes-wrapper"}
-                disableImagesLoaded={false}
-                updateOnEachImageLoad={false}
-            >
+            <div id="macy-container" className="o-notes-wrapper">
                 {items}
-            </Masonry>
+            </div>
         )
     }
 
+    componentDidMount() {
+        // initiate Macy
+        this.initiateMacy();
+    }
+
+    componentDidUpdate() {
+        this.initiateMacy();
+    }
+
+    initiateMacy = () => {
+        Macy({
+            container: '#macy-container',
+            trueOrder: false,
+            waitForImages: false,
+            margin: 24,
+            columns: 3,
+            breakAt: {
+                940: 3,
+                520: 2,
+                400: 1
+            }
+        });
+    }
 }
 
 export default NoteCreator;

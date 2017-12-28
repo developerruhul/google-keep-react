@@ -1,4 +1,3 @@
-//@ts-check
 import React from 'react';
 import './style/editor.css';
 import { connect } from "react-redux";
@@ -6,7 +5,7 @@ import { noteSubmit } from "../../../services/editor/actions";
 import Main from "../../../components/editor-main/main";
 import Footer from "../../../components/editor-footer/footer";
 import onClickOutside from "react-onclickoutside";
-import { RichUtils, EditorState, convertToRaw } from "draft-js";
+import { RichUtils, convertToRaw } from "draft-js";
 import { categoryChange, starFilter, lockFilter, noteChange, titleChange } from "../../../services/editor/actions";
 import { addCategory } from "../../../services/category/actions";
 
@@ -19,7 +18,6 @@ class MainForm extends React.Component {
             <section id="main__editor__ref" className="c-main-editor">
 
                 <Main
-                    // @ts-ignore
                     openEditor={this.openEditor}
                     handleKeyCommand={this.handleKeyCommand}
                     setNote={this.setLocalState}
@@ -27,7 +25,6 @@ class MainForm extends React.Component {
                 />
 
                 <Footer
-                    //@ts-ignore
                     star={this.props.star}
                     starChange={this.props.starChange}
                     lockChange={_ => this.props.lockChange(this.props.lock)}
@@ -71,21 +68,26 @@ class MainForm extends React.Component {
     // Ui methods---------------------
     handleClickOutside = _ => this.openEditor(false);
 
+
     // dispatch the save note action from here when the editor closes
     openEditor = (shouldIopen = true) => {
 
-        // if shouldIopen = false;
-        // then remove the `editor-opened` class and close editor
-        // else add it
-        document.getElementById("main__editor__ref")
-            .classList[shouldIopen ? 'add' : 'remove']("editor-opened");
-
+        const editorEl = document.getElementById("main__editor__ref");
 
         // save the data when editor closes
         // in this case when `shouldIopen = false`
         // and reset the editor
-        if (!shouldIopen) this.saveEditorData();
+        if (editorEl.classList.contains('editor-opened') && !shouldIopen) this.saveEditorData();
+
+
+        // if shouldIopen = false;
+        // then remove the `editor-opened` class and close editor
+        // else add it
+        editorEl.classList[shouldIopen ? 'add' : 'remove']("editor-opened");
+
     }
+
+
 
     saveEditorData = _ => {
 
@@ -94,9 +96,6 @@ class MainForm extends React.Component {
         const title = convertToRaw(this.props.title.getCurrentContent()),
             note = convertToRaw(this.props.note.getCurrentContent());
 
-        // resets the editor
-        this.props.editorReset();
-
 
         // if nothings in the note field
         // we don't do anything
@@ -104,11 +103,19 @@ class MainForm extends React.Component {
 
             // dispatch addNote action to get things going
             // @ts-ignore
-            this.props.addNote(
-                title, note, this.props.category, this.props.star, this.props.lock
-            );
+            this.props.addNote({
+                title,
+                note,
+                category: this.props.category,
+                star: this.props.star,
+                lock: this.props.lock
+            });
 
         }
+
+
+        // resets the editor
+        this.props.editorReset();
 
     }
 

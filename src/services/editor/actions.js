@@ -4,15 +4,16 @@ import {
 } from "../../util/index";
 
 
-export const noteSubmit = (title, note, category = 'uncategorized') => ({
+export const noteSubmit = ({title, note, category = 'uncategorized',star,lock,id}) => ({
     type: actions.SUBMIT_NOTE,
-    id: Util.createID(),
+    id: id || Util.createID(),
     note: {
         title,
         note,
-        filter: false,
         modified: Util.Date(),
-        category
+        category,
+        star,
+        lock
     }
 })
 

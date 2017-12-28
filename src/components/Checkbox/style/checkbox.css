@@ -47,7 +47,6 @@
     transform: rotate(45deg) scale(0);
     position: absolute;
     transition: 0.2s transform ease !important;
-    pointer-events: none;
 }
 
 @keyframes scaling {

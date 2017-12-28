@@ -1,10 +1,12 @@
+//@ts-check
 import * as actions from './constants';
 
 
 const initialState = {
     checkedNotesId: {},
     checkAll: false,
-    activeNote: false
+    activeNote: false,
+    editMode: false
 };
 
 
@@ -39,6 +41,12 @@ export function Notes(state = initialState, action) {
             return {
                 ...state,
                 activeNote: action.note
+            }
+
+        case actions.TOGGLE_EDIT_MODE:
+            return {
+                ...state,
+                editMode: !state.editMode
             }
 
         default:

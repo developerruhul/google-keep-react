@@ -2,15 +2,16 @@ import React from 'react';
 import { CheckboxInput } from '../../../../index';
 
 
-export default function HeaderActions({ toggleEditMode, ...other }) {
+export default function HeaderActions({ toggleEditMode, onChange, ...other }) {
     return (
         <div className="js-notes-selected-actions">
 
             <div role="button" className="o-notes-header-btn c-notes-select-toggle">
                 <span>All</span>
-                <CheckboxInput
-                    id="-f-4t3nkso49-"
-                    {...other}
+                <input
+                    type="checkbox"
+                    className="o-samsung-checkbox"
+                    onChange={onChange}
                     checked={other.checked}
                 />
             </div>

@@ -10,7 +10,8 @@ import {
     extractIdFromNotes,
     toggleAll,
     toggleNote,
-    toggleActiveNote
+    toggleActiveNote,
+    toggleEditMode
 } from "../../../services/notes/actions";
 
 
@@ -21,7 +22,7 @@ class NotesContainer extends React.Component {
 
     render() {
         const props = this.props;
-        this.activeNoteClassAdd();
+        const noteOverlayClass = this.props.activeNote ? 'active' : '';
 
         return (
             <div ref={e => this.parent = e} className="o-notes-container">
@@ -33,27 +34,34 @@ class NotesContainer extends React.Component {
                 />
 
                 <div
-                    onMouseDown={this.props.toggleActiveNote}
-                    ref={e => this.noteOverlay = e}
-                    className="active-note-overlay">
+                    onMouseDown={this.makeNoteInActive}
+                    id="activeNoteOverlay"
+                    className={`active-note-overlay ${noteOverlayClass}`}>
                 </div>
+
                 <NoteCreator
-                    data={props.notes}
-                    onChange={props.toggleNote}
-                    state={props.checkedNotesId}
-                    clickOnNote={this.props.toggleActiveNote}
+                    clickOnNote={this.props.dispatchWithID}
+                    activeNoteClass={this.props.activeNote}
+                    {...this.props}
                 />
             </div>
         )
     }
 
-    activeNoteClassAdd = (e) => {
-        const toggle = _ => [_].toggle("active", ![_].contains("active"));
-        if (this.props.activeNote) {
-            // toggle(this.props.activeNote.classList)
-            // toggle(this.noteOverlay.classList)
+
+    //------------ making active note-----------------
+    makeNoteInActive = () => {
+
+        if (!this.props.editMode) {
+
+            document.getElementById("activeNoteOverlay").classList.remove('active');
+            document.getElementById(this.props.activeNote).classList.remove("active");
+
+            this.props.dispatchWithID(false);
         }
     }
+
+
 
     // extract and store the id from every note object
     // to keep track of selected notes
@@ -69,8 +77,12 @@ class NotesContainer extends React.Component {
     // toggle `js-edit-mode` class on the parent
     // to toggle edit mode
     toggleEditMode = () => {
-        const classList = this.parent.classList;
-        classList.toggle("js-edit-mode", !classList.contains("js-edit-mode"))
+        this.props.toggleEditMode();
+
+        setTimeout(() => {
+            const classList = this.parent.classList;
+            classList.toggle("js-edit-mode", this.props.editModef);
+        }, 0);
     }
 
 
@@ -88,13 +100,11 @@ const stateToProps = ({
 
 const dispatchToProps = (dispatch) => ({
     extractIdFromNotes: (notes) => dispatch(extractIdFromNotes(notes)),
-
-    toggleAll: (props) => dispatch(toggleAll(props)),
-
-    toggleNote: (id) => dispatch(toggleNote(id)),
-
-    deleteNote: (props) => dispatch(deleteNote(props)),
-    toggleActiveNote: (_) => dispatch(toggleActiveNote(_))
+    toggleAll: _ => dispatch(toggleAll(_)),
+    toggleNote: _ => dispatch(toggleNote(_)),
+    deleteNote: _ => dispatch(deleteNote(_)),
+    dispatchWithID: _ => dispatch(toggleActiveNote(_)),
+    toggleEditMode: _ => dispatch(toggleEditMode())
 })
 
 

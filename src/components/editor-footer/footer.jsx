@@ -5,7 +5,7 @@ import './style.css';
 export default class Footer extends React.Component {
     render() {
         return (
-            <header className="o-editor-header">
+            <footer className="o-editor-footer">
 
 
                 <section className="editor-filter">
@@ -26,13 +26,13 @@ export default class Footer extends React.Component {
 
                 {/* save the note when user clicks this big save button  */}
                 <section
-                    onClick={this.props.saveNote}
+                    onMouseDown={this.props.saveNote}
                     role="button"
                     className="editor-action-btn">
                     SAVE
                 </section>
 
-            </header >
+            </footer >
         )
     }
 }

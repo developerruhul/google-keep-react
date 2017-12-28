@@ -4,7 +4,7 @@ import 'draft-js/dist/Draft.css';
 import Editor from "draft-js-plugins-editor";
 import createInlineToolbarPlugin from "draft-js-inline-toolbar-plugin";
 import "draft-js-inline-toolbar-plugin/lib/plugin.css";
-import { MainCategory } from "../MainCategory/app";
+import MainCategory from "../MainCategory/app";
 import { TitleInput } from "../Titleinput/app";
 
 
@@ -70,19 +70,19 @@ class Main extends React.Component {
         )
     }
 
-    componentDidMount() {
-        this.CategoryRef = document.getElementById('category_editor_ref');
-        this.checkOutsideClick();
-    }
+    // componentDidMount() {
+    //     this.CategoryRef = document.getElementById('category_editor_ref');
+    //     this.checkOutsideClick();
+    // }
 
 
-    checkOutsideClick = () => {
-        document.addEventListener('mousedown', e => {
-            if (!this.CategoryRef.contains(e.target) && this.props.categoryEditMode) {
-                this.props.changeCategoryEditMode();
-            }
-        });
-    }
+    // checkOutsideClick = () => {
+    //     document.addEventListener('mousedown', e => {
+    //         if (!this.CategoryRef.contains(e.target) && this.props.categoryEditMode) {
+    //             this.props.changeCategoryEditMode();
+    //         }
+    //     });
+    // }
 }
 
 

@@ -11,6 +11,9 @@ textarea,
 [contenteditable]:focus{
     outline: none;
 }
+.material-icons{
+    user-select: none;
+}
 
 /* normalize */
 *{
@@ -46,6 +49,7 @@ body{
     margin-left: 233px;
     padding: 41px 0;
     transition: 0.2s margin ease;
+    margin-bottom: 140px;
 }
 .hide__main__nav .o-main{
     margin-left: 0;

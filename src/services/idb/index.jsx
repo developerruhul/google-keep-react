@@ -1,6 +1,7 @@
 import db from "./idb";
 import React from "react";
 import { connect } from "react-redux";
+import isEqual from "lodash.isequal";
 
 
 class IDB extends React.Component {
@@ -23,7 +24,9 @@ class IDB extends React.Component {
         let nextKey = Object.keys(notes).length,
             oldKey = Object.keys(this.props.notes).length;
 
-        if (oldKey !== nextKey) this.modify(notes);
+        if (oldKey !== nextKey) {
+            this.modify(notes);
+        }
     }
 
 
