@@ -85,7 +85,7 @@ class Note extends React.Component {
         }
 
         // check if the note is lock
-        if (this.state.lock && !this.props.activeNoteClass) {
+        if (this.state.lock && !this.props.activeNoteClass && !this.props.editMode) {
             let userInput = prompt("Enter the password");
             if (userInput) userInput === this.state.lock ? makeItActive() : alert("Wrong password");
         } else {
