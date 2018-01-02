@@ -31,7 +31,7 @@ class NoteCreator extends React.Component {
         ));
 
         if (items.length === 0) {
-            items = <h1>Nothing here (:-</h1>
+            items = <h1>Nothing here :)</h1>
         }
 
         return (
