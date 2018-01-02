@@ -1,12 +1,13 @@
 //@ts-check
 import * as actions from './constants';
-
+import mapValues from "lodash.mapvalues";
 
 const initialState = {
     checkedNotesId: {},
     checkAll: false,
     activeNote: false,
-    editMode: false
+    editMode: false,
+    categoryEditMode: false
 };
 
 
@@ -47,6 +48,17 @@ export function Notes(state = initialState, action) {
             return {
                 ...state,
                 editMode: !state.editMode
+            }
+        case "RESET_NOTE":
+            return {
+                ...initialState,
+                checkedNotesId: mapValues(state.checkedNotesId, _ => false)
+            };
+
+        case actions.CHANGE_CATEGORY_EDITMODE:
+            return {
+                ...state,
+                categoryEditMode: !state.categoryEditMode
             }
 
         default:

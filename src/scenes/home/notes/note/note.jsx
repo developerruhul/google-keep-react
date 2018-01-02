@@ -8,6 +8,7 @@ import Footer from "../../../../components/editor-footer/footer";
 import { connect } from "react-redux";
 import { noteSubmit } from "../../../../services/editor/actions";
 import { addCategory } from "../../../../services/category/actions";
+import { Checkbox } from "material-ui";
 
 
 
@@ -28,46 +29,8 @@ class Note extends React.Component {
 
     }
 
-    render() {
-
-        const {
-            toggleNote,
-            checkedNotesId,
-            id
-        } = this.props;
 
 
-        return (
-            <article id={id} onMouseDown={this.makeNoteActive} className="o-note">
-                <input
-                    checked={checkedNotesId[id] || false}
-                    onChange={_ => toggleNote(id)}
-                    type="checkbox"
-                    className="o-samsung-checkbox"
-                />
-
-                <Main
-                    id={id}
-                    handleKeyCommand={this.handleKeyCommand}
-                    setNote={this.setLocalState}
-                    changeCategoryEditMode={this.changeCategoryEditMode}
-                    onCategoryChange={this.categoryChange}
-                    {...{ ...this.props, ...this.state }}
-                />
-
-                <div className="note-modified">
-                    Modified: {this.props.modified}
-                </div>
-
-                <Footer
-                    starChange={this.starChange}
-                    lockChange={this.lockChange}
-                    saveNote={this.saveNote}
-                    {...this.state}
-                />
-            </article>
-        )
-    }
 
     // ui method
     makeNoteActive = ({ currentTarget: { classList } }) => {
@@ -95,8 +58,6 @@ class Note extends React.Component {
     }
 
 
-
-
     // ---------------editor methods---------------
 
 
@@ -119,10 +80,9 @@ class Note extends React.Component {
     }
 
     // save note when note closes
-    componentWillReceiveProps({activeNoteClass}){
-        if(!activeNoteClass && this.props.activeNoteClass !== activeNoteClass){
-            this.saveNote();
-        }
+    componentWillReceiveProps({ activeNoteClass, category }) {
+        if (this.props.category !== category) this.setState({ category });
+        if (!activeNoteClass && this.props.activeNoteClass !== activeNoteClass) this.saveNote();
     }
 
 
@@ -139,6 +99,8 @@ class Note extends React.Component {
         let note = convertToRaw(this.state.note.getCurrentContent());
 
         this.props.saveNote({ ...this.state, title, note, id: this.props.id });
+
+        window.globalUtil.makeNoteInActive.apply(this);
     }
 
 
@@ -153,6 +115,51 @@ class Note extends React.Component {
 
     categoryChange = name => {
         this.setState({ category: name })
+    }
+
+
+    render() {
+
+        const {
+            toggleNote,
+            checkedNotesId,
+            id
+        } = this.props;
+
+
+        return (
+            <article id={id} onMouseDown={this.makeNoteActive} className="o-note">
+                <Checkbox
+                    checked={checkedNotesId[id] || false}
+                    onChange={_ => toggleNote(id)}
+                    // type="checkbox"
+                    classes={{
+                        default: "o-samsung-checkbox",
+                        checked: "checked"
+                    }}
+                />
+
+                <Main
+                    {...{ ...this.props, ...this.state }}
+                    id={id}
+                    handleKeyCommand={this.handleKeyCommand}
+                    setNote={this.setLocalState}
+                    changeCategoryEditMode={this.changeCategoryEditMode}
+                    onCategoryChange={this.categoryChange}
+                />
+
+                <div className="note-modified">
+                    Modified: {this.props.modified}
+                </div>
+
+                <Footer
+                    starChange={this.starChange}
+                    lockChange={this.lockChange}
+                    saveNote={this.saveNote}
+                    {...this.state}
+                />
+            </article>
+        )
     }
 }
 

@@ -40,3 +40,9 @@ export const toggleActiveNote = (note) => ({
 export const toggleEditMode = () => ({
     type: actions.TOGGLE_EDIT_MODE
 })
+
+export const changeCategoryEditMode = _ => ({
+    type: actions.CHANGE_CATEGORY_EDITMODE
+})
+
+

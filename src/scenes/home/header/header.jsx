@@ -1,16 +1,22 @@
 import React from 'react';
 import './style/header.css';
+import { connect } from "react-redux";
 
-export default class Header extends React.Component {
+class Header extends React.Component {
     render() {
+        let name = this.props.name === "star" ? "Favourites" : this.props.name;
+
         return (
             <header className="o-app-header" >
                 <section className="o-app-menu-title">
                     <i onClick={this.toggleNav} className="material-icons js-app-menu">menu</i>
 
                     <div role="heading" className="c-samsung-title">
-                        <h1>Samgsung Note</h1>
-                        <sup className="c-super-like">Web</sup>
+                        {
+                            this.props.name ? <h1>{name}</h1> :
+                                [<h1 key="1">Samgsung Note</h1>,
+                                <sup key="2" className="c-super-like">Web</sup>]
+                        }
                     </div>
                 </section>
             </header>
@@ -23,3 +29,5 @@ export default class Header extends React.Component {
     }
 
 }
+
+export default connect(({ route: { name } }) => ({ name }))(Header);

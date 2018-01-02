@@ -9,15 +9,25 @@ export function notes(state = {}, action) {
             }
 
         case actions.DELETE_NOTE:
-            return {
-                ...action.notes
-            }
-
         case "populate":
+            return action.notes
+
+        case actions.MOVE_NOTES:
+            let result = action.ids.reduce((accu, value) => ({
+                ...accu,
+                [value]: {
+                    ...state[value],
+                    category: action.name
+                }
+            }), {});
+
             return {
-                ...action.notes
+                ...state,
+                ...result
             }
 
-        default: return state;
+
+        default:
+            return state;
     }
 }

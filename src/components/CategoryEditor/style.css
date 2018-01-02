@@ -9,7 +9,7 @@
     box-shadow: 0px 0px 4px rgba(10, 10, 10, 0.2);
     border-radius: 2px;
     position: absolute;
-    z-index: 999;
+    z-index: 9;
     overflow: hidden;
     padding-top: 11px;
     font-size: 13px;
@@ -19,9 +19,10 @@
 
 /* editor header */
 .category__editor__header{
-    font-weight: 400;
-    font-size: 14px;
+    font-weight: 400 !important;
+    font-size: 14px !important;
     padding: 0 12px;
+    margin: 0 !important;
 }
 
 

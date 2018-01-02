@@ -56,3 +56,8 @@ export const noteChange = note => ({
     type: actions.DESC_INPUT_CHANGE,
     note
 })
+
+export const changeNotesTo = (name,ids) => ({
+    type: actions.MOVE_NOTES,
+    name,ids
+})

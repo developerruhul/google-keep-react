@@ -13,6 +13,17 @@ export const Category = (state = [], action) => {
         case "populate":
             return action.Category;
 
+        case "DELETE_CATEGORY":
+            return [
+                ...state.slice(0, action.index),
+                ...state.slice(action.index + 1)
+            ];
+
+        case "UPDATE_CATEGORY":
+            return Object.assign([], state, {
+                [action.index]: action.data
+            })
+
         default:
             return state;
     }

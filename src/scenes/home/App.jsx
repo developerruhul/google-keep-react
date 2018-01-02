@@ -5,10 +5,13 @@ import Nav from './nav/Nav';
 import NotesContainer from './notes/App';
 import MainForm from './editor/App';
 import IDB from "../../services/idb/index";
+import { Snack } from '../../components/snackbar/index';
+import { connect } from "react-redux";
+import { withRouter, Route } from "react-router-dom";
 
 
 
-export default class App extends React.Component {
+class App extends React.Component {
     render() {
         return (
             <main className="js-wrapper">
@@ -25,7 +28,19 @@ export default class App extends React.Component {
                 {/* IDB Database declarative style */}
                 <IDB />
 
+                <Snack
+                    open={this.props.snack.open}
+                    handleClose={this.props.closeSnack}
+                    message={this.props.snack.message}
+                />
+
             </main>
         )
     }
 }
+
+const mapDispatchToProps = d => ({
+    closeSnack: _ => d({ type: "MODIFY_SNACK", bool: false, message: '' })
+})
+
+export default withRouter(connect(({ snack }) => ({ snack }), mapDispatchToProps)(App));

@@ -6,3 +6,4 @@ export const FILTER_STAR = "FILTER_STAR";
 export const FILTER_LOCK = "FILTER_LOCK";
 export const TITLE_INPUT_CHANGE = "TITLE_INPUT_CHANGE";
 export const DESC_INPUT_CHANGE = "DESC_INPUT_CHANGE";
+export const MOVE_NOTES = "MOVE_NOTES";

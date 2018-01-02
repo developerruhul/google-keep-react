@@ -8,35 +8,18 @@ import onClickOutside from "react-onclickoutside";
 import { RichUtils, convertToRaw } from "draft-js";
 import { categoryChange, starFilter, lockFilter, noteChange, titleChange } from "../../../services/editor/actions";
 import { addCategory } from "../../../services/category/actions";
+import { withRouter } from "react-router-dom";
 
 
 
 
 class MainForm extends React.Component {
-    render() {
-        return (
-            <section id="main__editor__ref" className="c-main-editor">
 
-                <Main
-                    openEditor={this.openEditor}
-                    handleKeyCommand={this.handleKeyCommand}
-                    setNote={this.setLocalState}
-                    {...this.props}
-                />
-
-                <Footer
-                    star={this.props.star}
-                    starChange={this.props.starChange}
-                    lockChange={_ => this.props.lockChange(this.props.lock)}
-                    lock={this.props.lock}
-                    saveNote={_ => this.openEditor(false)}
-                />
-
-            </section >
-        )
+    componentWillReceiveProps({ route }) {
+        if (this.props.route !== route) {
+            this.injectRouteInEditor(route);
+        }
     }
-
-
 
 
 
@@ -87,8 +70,6 @@ class MainForm extends React.Component {
 
     }
 
-
-
     saveEditorData = _ => {
 
         // convert the inputs data into raw data to store
@@ -117,8 +98,44 @@ class MainForm extends React.Component {
         // resets the editor
         this.props.editorReset();
 
+        // inject the props from route
+        this.injectRouteInEditor(this.props.route)
+
     }
 
+    injectRouteInEditor = (route) => {
+        // reset first to prevent duplicate
+        this.props.editorReset();
+
+        route.filter === "filter" && route.name === "star" ? this.props.starChange() : null;
+        if (route.filter === "category")
+            this.props.onCategoryChange(route.name);
+    }
+
+
+
+    render() {
+        return (
+            <section id="main__editor__ref" className="c-main-editor">
+
+                <Main
+                    openEditor={this.openEditor}
+                    handleKeyCommand={this.handleKeyCommand}
+                    setNote={this.setLocalState}
+                    {...this.props}
+                />
+
+                <Footer
+                    star={this.props.star}
+                    starChange={this.props.starChange}
+                    lockChange={_ => this.props.lockChange(this.props.lock)}
+                    lock={this.props.lock}
+                    saveNote={_ => this.openEditor(false)}
+                />
+
+            </section >
+        )
+    }
 }
 
 
@@ -129,7 +146,8 @@ const mapStateToProps = ({
         ui: { categoryEditMode, category, title, note },
     footer: { star, locked: lock }
     },
-    Category: categories
+    Category: categories,
+    route
 }) => ({
         categoryEditMode,
         category,
@@ -137,7 +155,8 @@ const mapStateToProps = ({
         star,
         lock,
         title,
-        note
+        note,
+        route
     })
 
 
@@ -155,4 +174,4 @@ const mapDispatchToProps = dispatch => ({
 
 
 // @ts-ignore
-export default connect(mapStateToProps, mapDispatchToProps)(onClickOutside(MainForm));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(onClickOutside(MainForm)));
