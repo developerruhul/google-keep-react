@@ -50,7 +50,7 @@ class Main extends React.Component {
 
 
                     {/* Description input */}
-                    <section id={this.props.id} className="note_desc_editor">
+                    <section title="TIP : select any text to style" id={this.props.id} className="note_desc_editor">
                         <Editor
                             onFocus={props.openEditor}
                             onChange={e => props.setNote(e, 'note')}
