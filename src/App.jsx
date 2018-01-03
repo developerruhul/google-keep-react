@@ -1,5 +1,6 @@
+//@ts-check
 import React from 'react';
-import { HomePage } from "./scenes/index";
+import HomePage from "./scenes/home/App";
 // import { SignScene } from "./scenes/index";
 import { HashRouter } from "react-router-dom";
 

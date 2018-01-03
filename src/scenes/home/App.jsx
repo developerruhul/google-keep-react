@@ -11,7 +11,7 @@ import { withRouter, Route } from "react-router-dom";
 
 
 
-class App extends React.Component {
+class HomePage extends React.Component {
     render() {
         return (
             <main className="js-wrapper">
