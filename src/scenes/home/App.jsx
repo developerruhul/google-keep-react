@@ -43,4 +43,4 @@ const mapDispatchToProps = d => ({
     closeSnack: _ => d({ type: "MODIFY_SNACK", bool: false, message: '' })
 })
 
-export default withRouter(connect(({ snack }) => ({ snack }), mapDispatchToProps)(App));
+export default withRouter(connect(({ snack }) => ({ snack }), mapDispatchToProps)(HomePage));

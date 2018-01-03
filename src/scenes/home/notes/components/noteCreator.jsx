@@ -1,6 +1,6 @@
 import React from 'react';
 import Note from '../note/note';
-import { Utils } from "../../../index";
+import { Util } from "../../../../util/index";
 import Macy from "macy";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
@@ -11,7 +11,7 @@ class NoteCreator extends React.Component {
 
     render() {
 
-        let itemsArray = Utils.objToArray(this.props.notes);
+        let itemsArray = Util.objToArray(this.props.notes);
 
         if (this.props.filter.filter === "category") {
             itemsArray = itemsArray
