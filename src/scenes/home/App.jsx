@@ -7,7 +7,7 @@ import MainForm from './editor/App';
 import IDB from "../../services/idb/index";
 import { Snack } from '../../components/snackbar/index';
 import { connect } from "react-redux";
-import { withRouter, Route } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 
 

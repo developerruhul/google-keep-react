@@ -15,6 +15,7 @@
     width: 100%;
     display: flex;
     margin: 5px;
+    padding-left: 5px;
 }
 
 .categoryDialogue form input {

@@ -107,7 +107,9 @@ class MainForm extends React.Component {
         // reset first to prevent duplicate
         this.props.editorReset();
 
-        route.filter === "filter" && route.name === "star" ? this.props.starChange() : null;
+        if (route.filter === "filter" && route.name === "star")
+            this.props.starChange();
+
         if (route.filter === "category")
             this.props.onCategoryChange(route.name);
     }

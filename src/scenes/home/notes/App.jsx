@@ -13,7 +13,6 @@ import {
     changeCategoryEditMode
 } from "../../../services/notes/actions";
 import { addCategory } from "../../../services/category/actions";
-import { Snack } from "../../../components/snackbar/index";
 import { Route, Switch, withRouter } from "react-router-dom";
 import NotFound from "../../../components/notFound/index";
 

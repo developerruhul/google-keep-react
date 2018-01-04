@@ -34,7 +34,7 @@ export default class Category extends React.Component {
             editIcon: prev.editMode ? "done" : "edit"
         }));
 
-        e === "done" ? this.props.update(this.state.input) : null;
+        if (e === "done") this.props.update(this.state.input);
     }
 
     onInputChange = (e) => {

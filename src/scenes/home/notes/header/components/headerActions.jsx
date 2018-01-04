@@ -1,6 +1,4 @@
 import React from 'react';
-// import { CheckboxInput } from '../../../../index';
-import { Snack } from "../../../../../components/snackbar/index";
 import { connect } from "react-redux";
 import { Checkbox } from "material-ui";
 

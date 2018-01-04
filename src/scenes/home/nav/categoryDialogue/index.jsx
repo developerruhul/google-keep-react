@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Dialog } from "material-ui";
 import "./style.css";
-import { connect } from "react-redux";
 import Category from './category';
 
 
