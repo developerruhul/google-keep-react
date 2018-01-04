@@ -1,12 +1,36 @@
+//@ts-check
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App.jsx';
-import registerServiceWorker from './registerServiceWorker';
+import { HashRouter } from "react-router-dom";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+import { Reducers } from './store';
+import HomePage from "./scenes/home/App";
 
-ReactDOM.render(<App />, document.getElementById('root'));
 
-module.hot.accept('./App.jsx', () => {
-    ReactDOM.render(<App />, document.getElementById('root'));
+
+
+
+const store = createStore(
+    Reducers,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
+
+
+let render = () => ReactDOM.render(
+    <Provider store={store}>
+        <HashRouter>
+            <HomePage />
+        </HashRouter>
+    </Provider>,
+    document.getElementById('root')
+);
+
+
+
+render();
+
+module.hot.accept('./scenes/home/App', () => {
+    render();
 })
-
-registerServiceWorker();

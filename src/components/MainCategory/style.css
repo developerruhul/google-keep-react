@@ -1,0 +1,18 @@
+.editor-category {
+    margin: 10px 15px 3px;
+    user-select: none;
+}
+
+.editor-category span {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--primary-color);
+    text-decoration: underline;
+    cursor: pointer;
+    font-family: Roboto, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-transform: uppercase;
+}
+
+.editor-category span:active {
+    background: lightgrey;
+}
