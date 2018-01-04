@@ -4,7 +4,16 @@ import './style/header.css';
 
 class Header extends React.Component {
     render() {
-        let name = this.props.name === "star" ? "Favourites" : this.props.name;
+        let name;
+
+        if (this.props.name === "star") {
+            name = "Favourites"
+        } else if (this.props.name === "lock") {
+            name = "Lock"
+        } else {
+            name = this.props.name
+        }
+
 
         return (
             <header className="o-app-header" >
