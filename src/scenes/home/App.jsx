@@ -15,7 +15,7 @@ class HomePage extends React.Component {
     render() {
         return (
             <main className="js-wrapper">
-                <Header />
+                <Header name={this.props.header} />
                 <Nav />
 
                 <main className="o-main">
@@ -25,14 +25,17 @@ class HomePage extends React.Component {
                     </div>
                 </main>
 
-                {/* IDB Database declarative style */}
-                <IDB />
 
+                {/* dispatching SHOW_SNACK will cause this snack to appear--
+                 [message delete successful] and other */}
                 <Snack
                     open={this.props.snack.open}
                     handleClose={this.props.closeSnack}
                     message={this.props.snack.message}
                 />
+
+                {/* IDB Database declarative style */}
+                <IDB />
 
             </main>
         )
@@ -43,4 +46,8 @@ const mapDispatchToProps = d => ({
     closeSnack: _ => d({ type: "MODIFY_SNACK", bool: false, message: '' })
 })
 
-export default withRouter(connect(({ snack }) => ({ snack }), mapDispatchToProps)(HomePage));
+
+
+const mapStateToProps = ({ snack, route: { name } }) => ({ snack, header: name });
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HomePage));

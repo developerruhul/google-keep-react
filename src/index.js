@@ -1,10 +1,12 @@
+//@ts-check
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App.jsx';
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import { Reducers } from './store';
+import HomePage from "./scenes/home/App";
+
 
 
 
@@ -15,12 +17,13 @@ const store = createStore(
 );
 
 
+
 let render = () => ReactDOM.render(
-    <BrowserRouter>
-        <Provider store={store}>
-            <App />
-        </Provider>
-    </BrowserRouter>,
+    <Provider store={store}>
+        <HashRouter>
+            <HomePage />
+        </HashRouter>
+    </Provider>,
     document.getElementById('root')
 );
 
@@ -28,6 +31,6 @@ let render = () => ReactDOM.render(
 
 render();
 
-module.hot.accept('./App.jsx', () => {
+module.hot.accept('./scenes/home/App', () => {
     render();
 })

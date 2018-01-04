@@ -1,6 +1,6 @@
 import React from 'react';
 import './style/header.css';
-import { connect } from "react-redux";
+
 
 class Header extends React.Component {
     render() {
@@ -30,4 +30,4 @@ class Header extends React.Component {
 
 }
 
-export default connect(({ route: { name } }) => ({ name }))(Header);
+export default Header;
