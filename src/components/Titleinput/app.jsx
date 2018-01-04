@@ -1,6 +1,5 @@
 import React from "react";
 import Editor from "draft-js-plugins-editor";
-import './style.css';
 
 
 export const TitleInput = props => (

@@ -1,5 +1,6 @@
 import React from "react";
 import CategoryEditor from "../CategoryEditor/App";
+import "./style.css";
 
 
 export default class MainCategory extends React.Component {
