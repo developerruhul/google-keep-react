@@ -1,9 +1,11 @@
 import React from 'react';
-import Header from './header/header';
-import './styles/notes.css';
 import { connect } from "react-redux";
+import { Route, Switch, withRouter } from "react-router-dom";
+
+import './styles/notes.css';
 import NoteCreator from './components/noteCreator';
 import { deleteNote, changeNotesTo } from "../../../services/editor/actions";
+
 import {
     extractIdFromNotes,
     toggleAll,
@@ -12,9 +14,10 @@ import {
     toggleEditMode,
     changeCategoryEditMode
 } from "../../../services/notes/actions";
+
 import { addCategory } from "../../../services/category/actions";
-import { Route, Switch, withRouter } from "react-router-dom";
 import NotFound from "../../../components/notFound/index";
+import Header from './header/header';
 
 
 
