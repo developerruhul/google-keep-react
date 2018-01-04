@@ -16,7 +16,7 @@ import { withRouter } from "react-router-dom";
 class MainForm extends React.Component {
 
     componentWillReceiveProps({ route }) {
-        if (this.props.route !== route) {
+        if (route.name !== this.props.route.name) {
             this.injectRouteInEditor(route);
         }
     }
