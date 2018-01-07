@@ -180,7 +180,7 @@
 
 .category-wrapper{
     display: flex;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     align-items: baseline;
     margin-top: 30px;
     flex-flow: row wrap;
@@ -197,6 +197,7 @@
     user-select: none;
     cursor: pointer;
     margin-bottom: 20px;
+    margin-left: 10px;
 }
 .category-picker-category:hover{
     background: #f1f1f1;
