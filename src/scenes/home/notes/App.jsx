@@ -46,10 +46,10 @@ class NotesContainer extends React.Component {
                     <header>
                         <h1>Select a category</h1>
 
-                        <div className="add-category-interface">
+                        <form onSubmit={this.addCategoryFromInterface} className="add-category-interface">
                             <input ref={e => this.categoryInput = e} type="text" placeholder="Add a new one" />
                             <i onClick={this.addCategoryFromInterface} title="Add category" className="material-icons">add</i>
-                        </div>
+                        </form>
                     </header>
 
                     <div className="category-wrapper">
@@ -148,7 +148,9 @@ class NotesContainer extends React.Component {
 
 
     // ------------move note interface----------
-    addCategoryFromInterface = () => {
+    addCategoryFromInterface = e => {
+        e.preventDefault();
+
         this.props.addCategory(this.categoryInput.value);
         this.categoryInput.value = "";
     }
