@@ -1,0 +1,1 @@
+A lazy attempt to recreate `Samsung Notes` *android app* in reactjs(web)
