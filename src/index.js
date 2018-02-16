@@ -1,4 +1,3 @@
-//@ts-check
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter } from "react-router-dom";
@@ -31,6 +30,6 @@ let render = () => ReactDOM.render(
 
 render();
 
-module.hot.accept('./scenes/home/App', () => {
-    render();
-})
+// module.hot.accept('./scenes/home/App', () => {
+//     render();
+// })
