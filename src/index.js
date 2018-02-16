@@ -30,6 +30,6 @@ let render = () => ReactDOM.render(
 
 render();
 
-// module.hot.accept('./scenes/home/App', () => {
-//     render();
-// })
+module.hot.accept('./scenes/home/App', () => {
+    render();
+})
