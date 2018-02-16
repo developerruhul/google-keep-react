@@ -5,6 +5,8 @@ import { createStore } from "redux";
 import { Provider } from "react-redux";
 import { Reducers } from './store';
 import HomePage from "./scenes/home/App";
+import registerServiceWorker from './registerServiceWorker';
+
 
 
 
@@ -30,6 +32,8 @@ let render = () => ReactDOM.render(
 
 render();
 
-module.hot.accept('./scenes/home/App', () => {
-    render();
-})
+// module.hot.accept('./scenes/home/App', () => {
+//     render();
+// })
+
+registerServiceWorker();
