@@ -4,7 +4,7 @@ import { combineReducers } from "redux";
 import { footer } from "./editorFooter";
 
 export const Editor = combineReducers({
-    notes,
-    ui,
-    footer
-})
+  notes,
+  ui,
+  footer
+});
