@@ -1,10 +1,19 @@
-A lazy attempt to recreate `Samsung Notes` *android app* in reactjs(web)
+# `Samsung Notes` **android app** in reactjs
 
-Make it yours-
+## I am reiterating the project with thses features in mind-  
+ - [ ] Make it responsive  
+ - [ ] Make it work on cross browsers  
+ - [ ] Reiterate the design  
+ - [ ] Refactor the whole project  
+ - [ ] Store notes in a good way
 
-~~~ 
+---
+
+## Make it yours in these simple steps-
+
+```
     $ git clone https://github.com/iamruhul/samsung-notes-web.git
     $ cd samsung-notes-web
-    $ npm install
-    $ npm start 
-~~~
+    $ yarn install
+    $ yarn start
+```
