@@ -1,7 +1,7 @@
 /* global variables */
 :root{
-    --primary-color: #F46A4E;
-    --secondaryColor:#e8e8e8;
+    --primary-color: rgb(71, 158, 199);
+    --secondaryColor:rgb(232, 232, 232);
 }
 input,
 textarea,
