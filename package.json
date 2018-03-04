@@ -5,22 +5,19 @@
   "homepage": "https://samsung-notes-clone.netlify.com",
   "author": "M Ruhul Amin",
   "dependencies": {
-    "draft-js": "^0.10.4",
+    "dexie": "^2.0.1",
+    "draft-js": "^0.10.5",
     "draft-js-inline-toolbar-plugin": "^2.0.1",
     "draft-js-plugins-editor": "^2.0.3",
-    "draft-js-side-toolbar-plugin": "^2.0.1",
-    "firebase": "^4.6.2",
-    "lodash.isequal": "^4.5.0",
     "lodash.mapvalues": "^4.6.0",
     "macy": "^2.3.0",
-    "masonry-layout": "^4.2.0",
     "material-ui": "^1.0.0-beta.25",
     "react": "^16.2.0",
-    "react-contenteditable": "^2.0.5",
     "react-dom": "^16.0.0",
-    "react-masonry-component": "^6.0.2",
     "react-onclickoutside": "^6.7.0",
-    "react-scripts": "1.0.14"
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "redux": "^3.7.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -30,10 +27,7 @@
     "deploy": "gh-pages -d build"
   },
   "devDependencies": {
-    "dexie": "^2.0.1",
     "gh-pages": "^1.1.0",
-    "react-redux": "^5.0.6",
-    "react-router-dom": "^4.2.2",
-    "redux": "^3.7.2"
+    "react-scripts": "1.0.14"
   }
 }
