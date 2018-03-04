@@ -2,7 +2,8 @@
   "name": "samsung-notes-web",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://iamruhul.github.io/samsung-notes-web",
+  "homepage": "https://samsung-notes-clone.netlify.com",
+  "author": "M Ruhul Amin",
   "dependencies": {
     "draft-js": "^0.10.4",
     "draft-js-inline-toolbar-plugin": "^2.0.1",
