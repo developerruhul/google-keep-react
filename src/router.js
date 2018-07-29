@@ -40,7 +40,6 @@ class Router extends React.Component {
               component={SignUp}
             />
             <ProtectedRoute
-              exact
               authed={this.state.loggedIn}
               path="(/dashboard|/)"
               component={Dashboard}

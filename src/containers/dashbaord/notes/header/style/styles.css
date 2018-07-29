@@ -20,6 +20,7 @@
   transform: scale(0);
   float: right;
   justify-content: space-between;
+  align-items: center;
 }
 
 .o-notes-header-btn {
@@ -50,7 +51,6 @@
 /* toggle all button */
 .c-notes-select-toggle {
   margin-right: 20px;
-  padding-right: 40px;
 }
 .c-notes-select-toggle:active {
   transform: none !important;
@@ -60,9 +60,14 @@
 }
 
 .c-notes-select-toggle span {
-  padding-right: 5px;
   vertical-align: middle;
   font-weight: 500;
+}
+
+.c-notes-select-toggle span:last-child {
+  width: 19px;
+  height: 19px;
+  margin-left: 10px;
 }
 
 /* checkbox */
