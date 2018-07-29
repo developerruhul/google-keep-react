@@ -1,6 +1,6 @@
 import React from 'react';
 // import './style/checkbox.css';
-import { Checkbox as MCheckBox } from "material-ui";
+import { Checkbox as MCheckBox } from "@material-ui/core";
 
 
 export default function Checkbox({ id, onChange, checked = false, ...o }) {

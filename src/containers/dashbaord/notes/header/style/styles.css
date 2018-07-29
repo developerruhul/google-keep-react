@@ -1,0 +1,76 @@
+.o-notes-header {
+  width: 100%;
+  height: auto;
+  margin-bottom: 3.5em;
+  padding: 5px 0px;
+  position: relative;
+}
+
+.o-notes-header-title {
+  font-size: 14px;
+  color: #818080;
+  float: left;
+  padding: 5px 0;
+}
+
+.js-notes-selected-actions {
+  display: flex;
+  overflow: hidden;
+  transition: 0.2s all ease;
+  transform: scale(0);
+  float: right;
+  justify-content: space-between;
+}
+
+.o-notes-header-btn {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: 0.1s transform ease;
+  color: var(--primary-color);
+  border: 1px solid rgb(71, 158, 199);
+  border-radius: 2px;
+  margin-left: 10px;
+}
+
+.js-notes-selected-actions .o-notes-header-btn:active {
+  transform: scale(0.9);
+}
+
+.o-notes-header-btn:hover {
+  background: rgb(224, 224, 224);
+}
+
+.js-edit-mode .js-notes-selected-actions {
+  transform: scale(1);
+}
+
+/* toggle all button */
+.c-notes-select-toggle {
+  margin-right: 20px;
+  padding-right: 40px;
+}
+.c-notes-select-toggle:active {
+  transform: none !important;
+}
+.c-notes-select-toggle:hover {
+  background: none;
+}
+
+.c-notes-select-toggle span {
+  padding-right: 5px;
+  vertical-align: middle;
+  font-weight: 500;
+}
+
+/* checkbox */
+.c-notes-select-toggle .o-samsung-checkbox {
+  position: absolute;
+  top: -9px;
+}
+
+.o-samsung-checkbox.checked {
+  color: var(--primary-color);
+}

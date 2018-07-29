@@ -4,8 +4,9 @@ import { BrowserRouter } from "react-router-dom";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import { Reducers } from "./store";
-import HomePage from "./scenes/home/App";
+import Router from "./router";
 import registerServiceWorker from "./registerServiceWorker";
+import './index.css';
 
 const store = createStore(
   Reducers,
@@ -16,7 +17,7 @@ let render = () =>
   ReactDOM.render(
     <Provider store={store}>
       <BrowserRouter>
-        <HomePage />
+        <Router />
       </BrowserRouter>
     </Provider>,
     document.getElementById("root")
@@ -24,8 +25,10 @@ let render = () =>
 
 render();
 
-// module.hot.accept('./scenes/home/App', () => {
-//     render();
-// })
+if (module.hot) {
+  module.hot.accept("./router", () => {
+    render();
+  });
+}
 
 registerServiceWorker();
