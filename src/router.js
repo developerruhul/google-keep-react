@@ -1,10 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { PublicRoute, ProtectedRoute } from "./util/route";
-import Login from "./containers/login";
-import Dashboard from "./containers/dashbaord";
-import SignUp from "./containers/signup";
 import { firebaseAuth } from "./config/firebase";
+import asyncComponent from "./util/AsyncFunc";
 
 class Router extends React.Component {
   state = {
@@ -30,18 +28,18 @@ class Router extends React.Component {
               exact
               authed={this.state.loggedIn}
               path="/login"
-              component={Login}
+              component={asyncComponent(_ => import("./containers/login"))}
             />
             <PublicRoute
               exact
               authed={this.state.loggedIn}
               path="/signup"
-              component={SignUp}
+              component={asyncComponent(_ => import("./containers/signup"))}
             />
             <ProtectedRoute
               authed={this.state.loggedIn}
               path="(/dashboard|/)"
-              component={Dashboard}
+              component={asyncComponent(_ => import("./containers/dashbaord"))}
             />
             <Route render={_ => <Redirect to="/dashboard" />} />
           </Switch>

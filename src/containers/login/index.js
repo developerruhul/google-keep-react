@@ -65,7 +65,7 @@ class Login extends React.Component {
       this.setState({
         email: "",
         pw: "",
-        loading: true
+        loading: false
       });
     });
   };
