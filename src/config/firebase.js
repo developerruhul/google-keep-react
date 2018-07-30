@@ -1,4 +1,7 @@
-import Firebase from "firebase";
+import Firebase from "firebase/app";
+import "firebase/database";
+import "firebase/storage";
+import "firebase/auth";
 import Rebase from "re-base";
 
 var config = {
