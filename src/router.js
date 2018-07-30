@@ -21,7 +21,6 @@ class Router extends React.Component {
     });
   }
 
-
   render() {
     return (
       <BrowserRouter>

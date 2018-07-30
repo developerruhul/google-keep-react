@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { TextField, Button, Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import { login } from "../../util/auth";
+import { firebaseAuth } from "../../config/firebase";
 
 const LoginWrapper = styled.div`
   header {
@@ -19,7 +21,7 @@ const LoginWrapper = styled.div`
     background: rgba(255, 255, 255, 0.95);
     border-radius: 15px;
 
-    h1{
+    h1 {
       margin-bottom: 1.5rem;
     }
 
@@ -46,45 +48,85 @@ const LoginWrapper = styled.div`
   }
 `;
 
-const Login = () => {
-  return (
-    <LoginWrapper>
-      <header />
-      <main className="login-card">
-        <Typography variant="display2">Login</Typography>
-        <form>
-          <TextField
-            label="Email"
-            type="email"
-            autoComplete="current-email"
-            margin="normal"
-          />
+class Login extends React.Component {
+  state = {
+    email: "",
+    pw: "",
+    loading: true
+  };
 
-          <TextField
-            label="Password"
-            type="password"
-            autoComplete="current-password"
-            margin="normal"
-          />
+  login = e => {
+    e.preventDefault();
 
-          <Button
-            className="submit-btn"
-            variant="raised"
-            color="primary"
-            type="submit"
-          >
-            Login
-          </Button>
+    this.setState({ loading: true });
 
-          <Link className="signup" to="/signup">
-            <Button variant="outlined" color="default">
-              SignUp
+    login({ ...this.state }).catch(err => {
+      alert(err.message);
+      this.setState({
+        email: "",
+        pw: "",
+        loading: true
+      });
+    });
+  };
+
+  render() {
+    return (
+      <LoginWrapper>
+        <header />
+        <main className="login-card">
+          <Typography variant="display2">Login</Typography>
+          <form onSubmit={this.login}>
+            <TextField
+              required
+              label="Email"
+              type="email"
+              autoComplete="current-email"
+              margin="normal"
+              value={this.state.email}
+              onChange={_ => this.setState({ email: _.target.value })}
+            />
+
+            <TextField
+              required
+              label="Password"
+              type="password"
+              autoComplete="current-password"
+              margin="normal"
+              value={this.state.pw}
+              onChange={_ => this.setState({ pw: _.target.value })}
+            />
+
+            <Button
+              className="submit-btn"
+              variant="raised"
+              color="primary"
+              type="submit"
+              disabled={this.state.loading}
+            >
+              Login
             </Button>
-          </Link>
-        </form>
-      </main>
-    </LoginWrapper>
-  );
-};
+
+            <Link className="signup" to="/signup">
+              <Button
+                disabled={this.state.loading}
+                variant="outlined"
+                color="default"
+              >
+                SignUp
+              </Button>
+            </Link>
+          </form>
+        </main>
+      </LoginWrapper>
+    );
+  }
+
+  componentDidMount() {
+    firebaseAuth().onAuthStateChanged(user => {
+      if (!user) this.setState({ loading: false });
+    });
+  }
+}
 
 export default Login;

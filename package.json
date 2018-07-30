@@ -6,6 +6,7 @@
   "author": "M Ruhul Amin",
   "dependencies": {
     "@material-ui/core": "^1.4.1",
+    "@material-ui/icons": "^2.0.0",
     "dexie": "^2.0.1",
     "draft-js": "^0.10.5",
     "draft-js-inline-toolbar-plugin": "^2.0.1",

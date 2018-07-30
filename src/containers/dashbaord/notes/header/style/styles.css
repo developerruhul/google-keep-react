@@ -4,6 +4,8 @@
   margin-bottom: 3.5em;
   padding: 5px 0px;
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .o-notes-header-title {
@@ -11,6 +13,7 @@
   color: #818080;
   float: left;
   padding: 5px 0;
+  flex: 1;
 }
 
 .js-notes-selected-actions {
@@ -52,6 +55,12 @@
 .c-notes-select-toggle {
   margin-right: 20px;
 }
+@media (max-width: 48em) {
+  .c-notes-select-toggle {
+    margin-right: 0;
+  }
+}
+
 .c-notes-select-toggle:active {
   transform: none !important;
 }
@@ -68,12 +77,6 @@
   width: 19px;
   height: 19px;
   margin-left: 10px;
-}
-
-/* checkbox */
-.c-notes-select-toggle .o-samsung-checkbox {
-  position: absolute;
-  top: -9px;
 }
 
 .o-samsung-checkbox.checked {

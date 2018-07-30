@@ -4,6 +4,7 @@ import { TextField, Button, Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import ImgPicker from "../../components/imgPicker";
 import { signup } from "../../util/auth";
+import { firebaseAuth } from "../../config/firebase";
 
 const SignUpWrapper = styled.div`
   header {
@@ -55,7 +56,7 @@ const initState = {
   email: "",
   pw: "",
   name: "",
-  loading: false
+  loading: true
 };
 
 class SignUp extends React.Component {
@@ -66,20 +67,24 @@ class SignUp extends React.Component {
   addUser = e => {
     e.preventDefault();
 
-    // if (!this.state.imgUrl) {
-    //   alert("Please choose a profile picture");
-    //   return;
-    // }
+    if (!this.state.imgUrl) {
+      alert("Please choose a profile picture");
+      return;
+    }
 
     this.setState({ loading: true });
 
-    signup({ ...this.state })
-      .then(_ => this.setState({ loading: false }))
-      .catch(err => {
-        alert(err.message);
-        this.setState({ ...initState });
-      });
+    signup({ ...this.state, imgBlob: this.state.imgUrl }).catch(err => {
+      alert(err.message);
+      this.setState({ ...initState });
+    });
   };
+
+  componentDidMount() {
+    firebaseAuth().onAuthStateChanged(user => {
+      if (!user) this.setState({ loading: false });
+    });
+  }
 
   render() {
     return (
@@ -97,7 +102,7 @@ class SignUp extends React.Component {
               label="User Name"
               type="text"
               margin="normal"
-              // required
+              required
             />
 
             <TextField
@@ -132,7 +137,11 @@ class SignUp extends React.Component {
             </Button>
 
             <Link className="signup" to="/login">
-              <Button variant="outlined" color="default">
+              <Button
+                disabled={this.state.loading}
+                variant="outlined"
+                color="default"
+              >
                 Login
               </Button>
             </Link>
