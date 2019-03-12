@@ -1,8 +1,8 @@
 # `Samsung Notes` **android app** in reactjs
 
-## This is my first app in reactjs. Learnt a ton, browser storage, folder structure, refactoring etc.
+## This is my first app in reactjs. Learned a ton. Browser storage, folder structure, refactoring, redux and many many more things which can be learned only by doing a project by oneself, not by doing any course.
 
-### If I have time I will be reiterating the project inshallah with thses features in mind-  
+### If I have time I will be reiterating the project inshallah with these features in mind-  
  - [ ] Make it responsive  
  - [ ] Make it work on cross browsers  
  - [ ] Reiterate the design  
