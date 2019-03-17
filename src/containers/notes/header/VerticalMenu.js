@@ -45,6 +45,7 @@ class VerticalMenu extends React.Component {
           open={Boolean(anchorEl)}
           onClose={this.handleClose}
         >
+          <MenuItem onClick={this.move}>MOVE</MenuItem>
           <MenuItem onClick={this.delete}>DELETE</MenuItem>
         </Menu>
       </React.Fragment>
