@@ -9,7 +9,7 @@ class Router extends React.Component {
         <Switch>
           <Route
             path="/dashboard"
-            component={asyncComponent(() => import("./containers/dashbaord"))}
+            component={asyncComponent(() => import("./containers"))}
           />
           <Route render={() => <Redirect to="/dashboard" />} />
         </Switch>

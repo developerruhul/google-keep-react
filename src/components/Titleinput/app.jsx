@@ -1,13 +1,13 @@
 import React from "react";
-import Editor from "draft-js-plugins-editor";
 
-
-export const TitleInput = props => (
+export default function TitleInput(props) {
+  return (
     <section className="note_title_editor">
-        <Editor
-            placeholder="Title"
-            onChange={e => props.setNote(e, 'title')}
-            editorState={props.title}
-        />
+      <input
+        placeholder="Title"
+        onChange={e => props.setNote(e, "title")}
+        value={props.title}
+      />
     </section>
-)
+  );
+}

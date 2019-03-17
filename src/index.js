@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { PersistGate } from "redux-persist/integration/react";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
@@ -9,9 +10,11 @@ import "./index.css";
 
 let render = () =>
   ReactDOM.render(
-    <Provider store={store}>
+    <Provider store={store.store}>
       <BrowserRouter>
-        <Router />
+        <PersistGate loading={null} persistor={store.persistor}>
+          <Router />
+        </PersistGate>
       </BrowserRouter>
     </Provider>,
     document.getElementById("root")
