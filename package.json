@@ -7,8 +7,6 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.2",
-    "dexie": "^2.0.4",
-    "firebase": "^5.8.6",
     "lodash.mapvalues": "^4.6.0",
     "macy": "^2.4.0",
     "nprogress": "^0.2.0",
