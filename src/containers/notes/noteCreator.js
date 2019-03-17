@@ -19,7 +19,7 @@ class NoteCreator extends React.Component {
     }
 
     let items = itemsArray.map(item => (
-      <Note key={item.id} {...item} {...this.props} />
+      <Note key={item.id} {...this.props} {...item} />
     ));
 
     if (items.length === 0) {

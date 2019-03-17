@@ -1,8 +1,6 @@
 import React from "react";
-import "./style/style.css";
-
 import MainCategory from "../MainCategory/app";
-import TitleInput from "../Titleinput/app";
+import "./style/style.css";
 
 class Main extends React.Component {
   render() {
@@ -14,21 +12,21 @@ class Main extends React.Component {
           <MainCategory {...props} />
 
           {/* Title Input */}
-          <TitleInput {...props} />
+          <input
+            className="note_title_editor"
+            placeholder="Title"
+            onChange={e => props.setNote(e.target.value, "title")}
+            value={props.title}
+          />
 
           {/* Description input */}
-          <section
-            title="TIP : select any text to style"
-            id={this.props.id}
+          <textarea
             className="note_desc_editor"
-          >
-            <textarea
-              onFocus={props.openEditor}
-              onChange={e => props.setNote(e.target.value, "note")}
-              value={props.note}
-              placeholder="Take a note..."
-            />
-          </section>
+            onFocus={props.openEditor}
+            onChange={e => props.setNote(e.target.value, "note")}
+            value={props.note}
+            placeholder="Take a note..."
+          />
         </section>
       </main>
     );
