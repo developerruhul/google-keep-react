@@ -5,13 +5,18 @@ import { withRouter } from "react-router-dom";
 
 import Main from "components/editor-main/main";
 import Footer from "components/editor-footer/footer";
+
 import { actions as noteActions } from "reducers/editor/notes";
 import { actions as uiActions } from "reducers/editor/ui";
 import { actions as footerActions } from "reducers/editor/footer";
+import { actions as categoryActions } from "reducers/category";
+
 import "./editor.css";
 
-const { categoryChange, noteChange, titleChange, addCategory } = uiActions;
+const { categoryChange, noteChange, titleChange } = uiActions;
 const { starFilter, lockFilter } = footerActions;
+const { noteSubmit } = noteActions;
+const { addCategory } = categoryActions;
 
 class MainForm extends React.Component {
   componentWillReceiveProps({ route }) {
@@ -110,12 +115,10 @@ const mapStateToProps = ({
     ui: { categoryEditMode, category, title, note },
     footer: { star, locked: lock }
   },
-  category: categories,
   route
 }) => ({
   categoryEditMode,
   category,
-  categories,
   star,
   lock,
   title,
@@ -127,7 +130,7 @@ const mapDispatchToProps = dispatch => ({
   onCategoryChange: _ => dispatch(categoryChange(_)),
   changeCategoryEditMode: _ => dispatch({ type: "CATEGORY_EDITMODE" }),
   addCategory: _ => dispatch(addCategory(_)),
-  addNote: (..._) => dispatch(noteActions.noteSubmit(..._)),
+  addNote: (..._) => dispatch(noteSubmit(..._)),
   starChange: _ => dispatch(starFilter()),
   lockChange: _ => dispatch(lockFilter(_)),
   editorReset: _ => dispatch({ type: "RESET_EDITOR" }),

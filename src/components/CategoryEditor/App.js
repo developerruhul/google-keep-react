@@ -1,7 +1,14 @@
 import React from "react";
+import { connect } from "react-redux";
 import "./style.css";
 
-export default class CategoryEditor extends React.Component {
+class CategoryEditor extends React.Component {
+  submitCategory = e => {
+    e.preventDefault();
+    this.props.addCategory(this.input.value);
+    this.input.value = "";
+  };
+
   render() {
     return (
       <div hidden={!this.props.editMode} className="category__editor">
@@ -18,20 +25,18 @@ export default class CategoryEditor extends React.Component {
         </form>
 
         {/* category list below the input */}
-        {/* <ul className="category__editor__display">
+        <ul className="category__editor__display">
           {this.props.categories.map((name = "", index) => (
             <li key={index} onMouseDown={_ => this.props.onChange(name)}>
               {name}
             </li>
           ))}
-        </ul> */}
+        </ul>
       </div>
     );
   }
-
-  submitCategory = e => {
-    e.preventDefault();
-    this.props.addCategory(this.input.value);
-    this.input.value = "";
-  };
 }
+
+export default connect(state => ({ categories: state.category }))(
+  CategoryEditor
+);

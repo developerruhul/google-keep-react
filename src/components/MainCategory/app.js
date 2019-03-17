@@ -3,6 +3,24 @@ import CategoryEditor from "../CategoryEditor/App";
 import "./style.css";
 
 export default class MainCategory extends React.Component {
+  componentDidMount() {
+    document.addEventListener("mousedown", this.checkOutsideClick);
+  }
+
+  componentWillUnmount() {
+    document.addEventListener("mousedown", this.checkOutsideClick);
+  }
+
+  checkOutsideClick = e => {
+    if (
+      this.CategoryRef &&
+      !this.CategoryRef.contains(e.target) &&
+      this.props.categoryEditMode
+    ) {
+      this.props.changeCategoryEditMode();
+    }
+  };
+
   render() {
     let props = this.props;
 
@@ -23,22 +41,4 @@ export default class MainCategory extends React.Component {
       </div>
     );
   }
-
-  componentDidMount() {
-    document.addEventListener("mousedown", this.checkOutsideClick);
-  }
-
-  componentWillUnmount() {
-    document.addEventListener("mousedown", this.checkOutsideClick);
-  }
-
-  checkOutsideClick = e => {
-    if (
-      this.CategoryRef &&
-      !this.CategoryRef.contains(e.target) &&
-      this.props.categoryEditMode
-    ) {
-      this.props.changeCategoryEditMode();
-    }
-  };
 }

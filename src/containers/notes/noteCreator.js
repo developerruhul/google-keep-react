@@ -10,7 +10,7 @@ class NoteCreator extends React.Component {
   render() {
     let itemsArray = Util.objToArray(this.props.notes);
 
-    if (this.props.filter.filter === "category") {
+    if (this.props.filter.filter === "category" && itemsArray.length > 0) {
       itemsArray = itemsArray.filter(
         item => item.category.toLowerCase() === this.props.filter.name
       );
