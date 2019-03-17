@@ -1,9 +1,10 @@
 import React from "react";
-import Note from "../note/note";
-import { Util } from "util/index";
 import Macy from "macy";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+
+import Note from "./note";
+import { Util } from "util/index";
 
 class NoteCreator extends React.Component {
   render() {

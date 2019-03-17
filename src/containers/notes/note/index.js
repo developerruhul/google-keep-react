@@ -1,29 +1,24 @@
 import React from "react";
-import { EditorState, convertFromRaw, RichUtils, convertToRaw } from "draft-js";
 import { connect } from "react-redux";
 import { Checkbox } from "@material-ui/core";
 
 import Main from "components/editor-main/main";
 import Footer from "components/editor-footer/footer";
+
 import { actions as noteActions } from "reducers/editor/notes";
 import { actions as categoryActions } from "reducers/category";
-import "./style/note.css";
+
+import "./style.css";
 
 class Note extends React.Component {
-  constructor(props) {
-    super(props);
-    let makeEditorState = state =>
-      EditorState.createWithContent(convertFromRaw(state));
-
-    this.state = {
-      title: makeEditorState(this.props.title),
-      note: makeEditorState(this.props.note),
-      star: this.props.star,
-      lock: this.props.lock,
-      category: this.props.category,
-      categoryEditMode: false
-    };
-  }
+  state = {
+    title: this.props.title,
+    note: this.props.note,
+    star: this.props.star,
+    lock: this.props.lock,
+    category: this.props.category,
+    categoryEditMode: false
+  };
 
   // ui method
   makeNoteActive = ({ currentTarget: { classList } }) => {
@@ -61,22 +56,6 @@ class Note extends React.Component {
     this.setState({ [item]: e });
   };
 
-  _onCommand = command => {
-    this.setLocalState(
-      RichUtils.toggleInlineStyle(this.props.note, command),
-      "note"
-    );
-  };
-
-  handleKeyCommand = (command, editorState) => {
-    const newState = RichUtils.handleKeyCommand(editorState, command);
-    if (newState) {
-      this.setLocalState(newState, "note");
-      return "handled";
-    }
-    return "not-handled";
-  };
-
   // save note when note closes
   componentWillReceiveProps({ activeNoteClass, category }) {
     if (this.props.category !== category) this.setState({ category });
@@ -93,8 +72,8 @@ class Note extends React.Component {
   starChange = () => this.setState(prev => ({ star: !prev.star }));
 
   saveNote = () => {
-    let title = convertToRaw(this.state.title.getCurrentContent());
-    let note = convertToRaw(this.state.note.getCurrentContent());
+    let title = this.state.title;
+    let note = this.state.note;
 
     this.props.saveNote({ ...this.state, title, note, id: this.props.id });
 
@@ -120,7 +99,6 @@ class Note extends React.Component {
         <Checkbox
           checked={checkedNotesId[id] || false}
           onChange={_ => toggleNote(id)}
-          // type="checkbox"
           classes={{
             root: "o-samsung-checkbox",
             checked: "checked"
@@ -130,7 +108,6 @@ class Note extends React.Component {
         <Main
           {...{ ...this.props, ...this.state }}
           id={id}
-          handleKeyCommand={this.handleKeyCommand}
           setNote={this.setLocalState}
           changeCategoryEditMode={this.changeCategoryEditMode}
           onCategoryChange={this.categoryChange}

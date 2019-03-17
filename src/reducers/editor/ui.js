@@ -1,5 +1,3 @@
-import { EditorState } from "draft-js";
-
 const constants = {
   CATEGORY_EDITMODE: "CATEGORY_EDITMODE",
   CATEGORY_CHANGE: "CATEGORY_CHANGE",
@@ -27,8 +25,8 @@ export const actions = {
 const initialState = {
   categoryEditMode: false,
   category: "UNCATEGORIZED",
-  note: EditorState.createEmpty(),
-  title: EditorState.createEmpty()
+  note: "",
+  title: ""
 };
 
 export default (state = initialState, action) => {

@@ -1,7 +1,6 @@
 import React from "react";
-import "./style/styles.css";
-import EditButton from "./components/editbtn";
-import HeaderActions from "./components/headerActions";
+import HeaderActions from "./headerActions";
+import "./styles.css";
 
 class Header extends React.Component {
   render() {
@@ -10,7 +9,14 @@ class Header extends React.Component {
     return (
       <header className="o-notes-header">
         <h1 className="o-notes-header-title">NOTES</h1>
-        <EditButton toggle={toggleEditMode} />
+        <div
+          onMouseDown={toggleEditMode}
+          role="button"
+          className="o-notes-header-btn js-note-edit"
+        >
+          EDIT
+        </div>
+
         <HeaderActions toggleEditMode={toggleEditMode} {...other} />
       </header>
     );

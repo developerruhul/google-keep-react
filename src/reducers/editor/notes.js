@@ -6,6 +6,40 @@ export const constants = {
   MOVE_NOTES: "MOVE_NOTES"
 };
 
+export default function notes(state = {}, action) {
+  switch (action.type) {
+    case constants.SUBMIT_NOTE:
+      return {
+        ...state,
+        [action.id]: action.note
+      };
+
+    case constants.DELETE_NOTE:
+    case "populate":
+      return action.notes;
+
+    case constants.MOVE_NOTES:
+      let result = action.ids.reduce(
+        (accu, value) => ({
+          ...accu,
+          [value]: {
+            ...state[value],
+            category: action.name
+          }
+        }),
+        {}
+      );
+
+      return {
+        ...state,
+        ...result
+      };
+
+    default:
+      return state;
+  }
+}
+
 export const actions = {
   noteSubmit: ({
     title,
@@ -45,37 +79,3 @@ export const actions = {
     ids
   })
 };
-
-export default function notes(state = {}, action) {
-  switch (action.type) {
-    case constants.SUBMIT_NOTE:
-      return {
-        ...state,
-        [action.id]: action.note
-      };
-
-    case constants.DELETE_NOTE:
-    case "populate":
-      return action.notes;
-
-    case constants.MOVE_NOTES:
-      let result = action.ids.reduce(
-        (accu, value) => ({
-          ...accu,
-          [value]: {
-            ...state[value],
-            category: action.name
-          }
-        }),
-        {}
-      );
-
-      return {
-        ...state,
-        ...result
-      };
-
-    default:
-      return state;
-  }
-}

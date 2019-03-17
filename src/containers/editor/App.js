@@ -8,7 +8,7 @@ import Footer from "components/editor-footer/footer";
 import { actions as noteActions } from "reducers/editor/notes";
 import { actions as uiActions } from "reducers/editor/ui";
 import { actions as footerActions } from "reducers/editor/footer";
-import "./style/editor.css";
+import "./editor.css";
 
 const { categoryChange, noteChange, titleChange, addCategory } = uiActions;
 const { starFilter, lockFilter } = footerActions;

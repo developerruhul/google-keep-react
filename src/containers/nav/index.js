@@ -1,8 +1,8 @@
 import React from "react";
-import "./style/nav.css";
 import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
 import EditorDialogue from "./categoryDialogue/index";
+import "./nav.css";
 
 class Nav extends React.Component {
   render() {

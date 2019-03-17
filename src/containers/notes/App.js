@@ -6,10 +6,10 @@ import { actions as editorActions } from "reducers/editor/notes";
 import { actions as noteActions } from "reducers/notes";
 import { actions as categoryActions } from "reducers/category";
 
-import NoteCreator from "./components/noteCreator";
+import NoteCreator from "./noteCreator";
 import NotFound from "components/notFound/index";
-import Header from "./header/header";
-import "./styles/notes.css";
+import Header from "./header";
+import "./notes.css";
 
 const { deleteNote, changeNotesTo } = editorActions;
 const { addCategory } = categoryActions;

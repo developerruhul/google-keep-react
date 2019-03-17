@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles/app.css";
-import Header from "./header/header";
-import Nav from "./nav/Nav";
+import Header from "./header";
+import Nav from "./nav";
 import NotesContainer from "./notes/App";
 import MainForm from "./editor/App";
 import IDB from "../services/idb/index";
