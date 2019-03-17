@@ -46,7 +46,6 @@ class VerticalMenu extends React.Component {
           onClose={this.handleClose}
         >
           <MenuItem onClick={this.delete}>DELETE</MenuItem>
-          <MenuItem onClick={this.move}>MOVE</MenuItem>
         </Menu>
       </React.Fragment>
     );

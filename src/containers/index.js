@@ -4,7 +4,6 @@ import Header from "./header";
 import Nav from "./nav";
 import NotesContainer from "./notes/App";
 import MainForm from "./editor/App";
-import IDB from "../services/idb/index";
 import { Snack } from "../components/snackbar/index";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
@@ -30,9 +29,6 @@ class App extends React.Component {
           handleClose={this.props.closeSnack}
           message={this.props.snack.message}
         />
-
-        {/* IDB Database declarative style */}
-        <IDB />
       </main>
     );
   }

@@ -53,13 +53,6 @@ class HeaderActions extends React.Component {
         </label>
 
         <div
-          onClick={this.category}
-          role="button"
-          className="o-notes-header-btn hide-in-mobile"
-        >
-          MOVE
-        </div>
-        <div
           onClick={this.deleteNoteWithNoti}
           role="button"
           className="o-notes-header-btn hide-in-mobile"
