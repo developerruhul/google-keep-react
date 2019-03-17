@@ -26,7 +26,7 @@ class NotesContainer extends React.Component {
   render() {
     const props = this.props;
     const noteOverlayClass = this.props.activeNote ? "active" : "";
-    const categoryAnimClass = this.props.categorycditMode ? "opened" : "";
+    const categoryAnimClass = this.props.categoryEditMode ? "opened" : "";
 
     return (
       <div ref={e => (this.parent = e)} className="o-notes-container">
