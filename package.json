@@ -2,35 +2,35 @@
   "name": "samsung-notes-web",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ruhulwebdev.github.io/samsung-notes-web",
+  "homepage": "https://ruhulamindev.com/samsung-notes-web",
   "author": "Ruhul Amin",
   "dependencies": {
-    "@material-ui/core": "^3.9.2",
-    "@material-ui/icons": "^3.0.2",
+    "@material-ui/core": "^4.9.1",
+    "@material-ui/icons": "^4.9.1",
     "lodash.mapvalues": "^4.6.0",
-    "macy": "^2.4.0",
+    "macy": "^2.5.1",
     "nprogress": "^0.2.0",
     "re-base": "^4.0.0",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4",
-    "react-onclickoutside": "^6.8.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-onclickoutside": "^6.9.0",
     "react-placeholder": "^3.0.2",
-    "react-redux": "^6.0.1",
-    "react-router-dom": "^4.3.1",
-    "redux": "^4.0.1",
-    "redux-persist": "^5.10.0",
-    "styled-components": "^4.1.3"
+    "react-redux": "^7.1.3",
+    "react-router-dom": "^5.1.2",
+    "redux": "^4.0.5",
+    "redux-persist": "^6.0.0",
+    "styled-components": "^5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "deploy": "gh-pages -d build"
+    "deploy": "yarn build && gh-pages -d build"
   },
   "devDependencies": {
-    "gh-pages": "^2.0.1",
-    "react-scripts": "2.1.8"
+    "gh-pages": "^2.2.0",
+    "react-scripts": "3.3.1"
   },
   "browserslist": [
     ">0.2%",
