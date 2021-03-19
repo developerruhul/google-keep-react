@@ -4,17 +4,13 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
-
 import Router from './router';
 import './index.css';
-
-const baseName =
-  process.env.NODE_ENV === 'production' ? 'samsung-notes-web' : '';
 
 let render = () =>
   ReactDOM.render(
     <Provider store={store.store}>
-      <BrowserRouter basename={baseName}>
+      <BrowserRouter>
         <PersistGate loading={null} persistor={store.persistor}>
           <Router />
         </PersistGate>
