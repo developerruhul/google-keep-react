@@ -1,4 +1,4 @@
-# `Google Keep` Clone using reactjs
+# `Google Keep React` A clone of Google Keep using ReactJS
 
 ## My first app ever. Written in reactjs. Learned a ton. Browser storage, folder structure, refactoring, redux and many many more things which can be learned only by doing a real project.
 
