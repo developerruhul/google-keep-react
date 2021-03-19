@@ -1,9 +1,9 @@
 {
-  "name": "samsung-notes-web",
+  "name": "google-keep-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ruhulamindev.com/samsung-notes-web",
-  "author": "Ruhul Amin",
+  "homepage": "https://google-keep-react.netlify.app",
+  "author": "Developer Ruhul",
   "dependencies": {
     "@material-ui/core": "^4.9.1",
     "@material-ui/icons": "^4.9.1",
