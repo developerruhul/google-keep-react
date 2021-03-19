@@ -13,13 +13,3 @@
  - [x] Rearrange the folder strucuture
  - [x] Store notes in a good way
 
----
-
-### Usage
-
-```
-    $ git clone https://github.com/iamruhul/samsung-notes-web.git
-    $ cd samsung-notes-web
-    $ yarn install
-    $ yarn start
-```
