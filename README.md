@@ -1,9 +1,8 @@
-# `Samsung Notes` **android app** in reactjs
+# `Google Keep` Clone using reactjs
 
 ## My first app ever. Written in reactjs. Learned a ton. Browser storage, folder structure, refactoring, redux and many many more things which can be learned only by doing a real project.
 
-## If I have time I will be reiterating the project inshallah with these features in mind-
-### A small rewrite in 17/03/2019   
+## If I have time I will be reiterating the project with these features in mind -
  - [ ] Make it responsive  
  - [ ] Make it work on cross browsers  
  - [ ] Reiterate the design  
